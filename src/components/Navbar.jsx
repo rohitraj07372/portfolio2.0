@@ -21,13 +21,13 @@ import { colorPalette } from '../styles/colorPallet/colors';
 import { getNavbarStyles } from '../styles/navbarStyles';
 import profile3 from '../assets/profile_3.jpg';
 
-const Navbar = ({ menuItems, socialLinks }) => {
-  const [darkMode, setDarkMode] = useState(false);
+const Navbar = ({ menuItems, socialLinks, darkMode, toggleTheme }) => {
+  // const [darkMode, setDarkMode] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const isMobile = useMediaQuery('(max-width:768px)');
   const styles = getNavbarStyles(darkMode, colorPalette);
 
-  const toggleTheme = () => setDarkMode(!darkMode);
+  // const toggleTheme = () => setDarkMode(!darkMode);
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
   const iconColor = darkMode ? '#fff' : '#000';

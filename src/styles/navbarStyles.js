@@ -26,7 +26,7 @@ export const getNavbarStyles = (darkMode, colorPalette) => ({
   },
   activeItem: {
     backgroundColor: darkMode ? '#333' : '#d79b00',
-    boxShadow: 'inset 0 2px 5px rgba(0,0,0,0.3)',
+    boxShadow: 'inset 0 2px 5px rgba(0, 0, 0, 0.3)',
   },
   socialIcons: {
     display: 'flex',
