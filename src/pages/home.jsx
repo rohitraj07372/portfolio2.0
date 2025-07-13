@@ -13,16 +13,16 @@ import html from '../assets/tech/html.png';
 import css from '../assets/tech/css.png';
 import next from '../assets/tech/next.png';
 import sql from '../assets/tech/sql.png';
- 
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = ({ darkMode }) => {
   const isMobile = useMediaQuery('(max-width:768px)');
   const styles = getHomePageStyles(darkMode);
-
+const navigate = useNavigate(); 
   return (
     <Box sx={{...styles.root}}>
-      <Box sx={{ ...styles.section, flexDirection: isMobile ? 'column-reverse' : 'row', gap:2, }}>
+      <Box sx={{ ...styles.section, flexDirection: isMobile ? 'column-reverse' : 'row', gap:8, }}>
         {/* Left Text */}
         <Box sx={styles.textContainer}>
           <Typography variant="h5" sx={{ color: darkMode ? '#ccc' : '#555' }}>
@@ -34,13 +34,15 @@ const Home = ({ darkMode }) => {
            <Typography variant="h3" fontWeight="bold" color="primary">
             MERN Stack Developer
           </Typography>
-          <Typography sx={{ mt: 2, fontSize: 18 }}>
+          <Typography color='primary' sx={{ mt: 2, fontSize: 22, fontWeight:'bold' ,}}>
             "Turning clean code and UI magic into full-stack functional experiences."
           </Typography>
           <Box sx={{ display: 'flex', gap: 2, mt: 4 }}>
-            <Button variant="contained">Learn More</Button>
+            <Button onClick={()=>{
+              navigate('/about');
+            }} variant="contained">Learn More</Button>
             <Button variant="contained" color="secondary">
-              Resume ⏩
+              Resume 
             </Button>
           </Box>
         </Box>
