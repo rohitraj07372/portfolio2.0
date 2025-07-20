@@ -1,18 +1,20 @@
-// homepagestyle.js
-
-import { alignItems, border, display, height, justifyContent, maxHeight, padding, width } from "@mui/system";
-import { colorPalette } from "./colorPallet/colors";
-import { transform } from "framer-motion";
+ 
 
 export const getHomePageStyles = (darkMode) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     minHeight: 'calc(100vh - 64px)', 
-    backgroundColor: darkMode ?'rgb(0, 0, 0)' : '#fff8a6',
+    position: 'relative',
+  background: darkMode
+  ? `radial-gradient(ellipse 60% 30% at 70% 15%, rgba(0, 0, 0, 0.22) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 20% at 20% 70%, rgba(255, 102, 0, 0.16) 0%, transparent 80%),
+      linear-gradient(135deg, #09090f 0%, #181829 60%, #1a130b 100%)`
+  : '#fff8a6',
     color: darkMode ? '#fff' : '#000',
     transition: 'all 0.5s ease',
     justifyContent: 'center',
+        overflow: 'hidden',
     
   },
   section: {

@@ -14,6 +14,7 @@ import css from '../assets/tech/css.png';
 import next from '../assets/tech/next.png';
 import sql from '../assets/tech/sql.png';
 import { useNavigate } from 'react-router-dom';
+import Particles from '../components/particleBackground/Particle';
 
 
 const Home = ({ darkMode }) => {
@@ -22,6 +23,26 @@ const Home = ({ darkMode }) => {
 const navigate = useNavigate(); 
   return (
     <Box sx={{...styles.root}}>
+      {darkMode &&  (  <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 2,
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <Particles
+            particleColors={['#ffffff', '#ffffff']}
+            particleCount={200}
+            particleSpread={8}
+            speed={0.12}
+            particleBaseSize={90}
+            moveParticlesOnHover={true}
+            alphaParticles={false}
+            disableRotation={false}
+          />
+        </Box>)}
       <Box sx={{ ...styles.section, flexDirection: isMobile ? 'column-reverse' : 'row', gap:8, }}>
         {/* Left Text */}
         <Box sx={styles.textContainer}>

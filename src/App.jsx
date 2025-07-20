@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import { useState } from 'react';
 import SplashCursor from './components/SplashCursor/SplashCursor';
 import Butterfly from './components/Butterfly/Butterfly';
+
 const Home = lazy(()=> import('./pages/home'));
 const About = lazy(()=> import('./pages/about'));
 const ContactUs = lazy(()=> import('./pages/contactUs'));
@@ -39,10 +40,11 @@ const Youtube = lazy(()=> import ('./pages/youtube'));
         <Navbar darkMode={darkMode} toggleTheme={toggleTheme} menuItems={[
           { label: 'Home', path: '/' },
           { label: 'About', path: '/about' },
-          { label: 'Projectss' ,path: '/projects' },
+          { label: 'Projects' ,path: '/projects' },
+          { label: 'Experience', path: '/experience' },
           { label: 'Youtube', path: '/youtube' },
-          { label: 'Contact Us', path: '/contactus' },
-          { label: 'Youtube', path: '/youtube' }
+          { label: 'Contact', path: '/contact' },
+           
         ]}/>
       </Box>
      
@@ -50,8 +52,8 @@ const Youtube = lazy(()=> import ('./pages/youtube'));
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path='/' element={<Home darkMode={darkMode}/>}/>
-            <Route path='/about' element={<About/>}/>
-            <Route path='/contactus' element={<ContactUs/>}/>
+            <Route path='/about' element={<About/>} darkMode={darkMode}/>
+            <Route path='/contact' element={<ContactUs darkMode={darkMode}/>}/>
             <Route path='/youtube' element={<Youtube/>}/>
           </Routes>
         </Suspense>

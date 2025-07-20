@@ -1,10 +1,14 @@
 import React from 'react'
-
-const about = () => {
+import { Box } from '@mui/material';
+import IdCard from '../components/IDCard/IdCard';
+const about = ({darkmode}) => {
   return (
-    <div>
-      
-    </div>
+     <Box>
+
+        <IdCard
+         darkMode={darkmode}
+      />
+     </Box>
   )
 }
 

@@ -1,6 +1,6 @@
 export const getNavbarStyles = (darkMode, colorPalette) => ({
   navBar: {
-    backgroundColor: darkMode ? '#1a1a1a' : colorPalette.primary.main,
+    backgroundColor: darkMode ? 'rgba(27, 27, 27, 0.94)' : colorPalette.primary.main,
     color: darkMode ? '#fff' : '#000',
     transition: 'all 0.5s ease',
     padding: '10px 20px',
