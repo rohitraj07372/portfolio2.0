@@ -1,12 +1,17 @@
+import { InitColorSchemeScript } from "@mui/material";
+import { Post } from "ogl";
+
 export const getAboutStyles = (darkMode, colorPallet) => ({
   root: {
-    display: 'flex',
-    flexDirection: { xs: 'column', md: 'row' },
+    
+    
     minHeight: 'calc(100vh - 64px)',
-    position: 'relative',
-    alignItems: 'center',
-    justifyContent: 'center',
-    px: 2,
+    
+     position: 'relative',
+    
+
+ 
+    px: 4,
     background: darkMode
       ? `radial-gradient(ellipse 60% 30% at 70% 15%, rgba(0, 0, 0, 0.22) 0%, transparent 70%),
          radial-gradient(ellipse 50% 20% at 20% 70%, rgba(255, 102, 0, 0.16) 0%, transparent 80%),

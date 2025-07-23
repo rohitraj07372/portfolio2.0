@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import { useState } from 'react';
 import SplashCursor from './components/SplashCursor/SplashCursor';
 import Butterfly from './components/Butterfly/Butterfly';
-
+import LoadingScreen from './components/fallback/FallbackScreen';
 const Home = lazy(()=> import('./pages/home'));
 const About = lazy(()=> import('./pages/about'));
 const ContactUs = lazy(()=> import('./pages/contactUs'));
@@ -49,7 +49,7 @@ const Youtube = lazy(()=> import ('./pages/youtube'));
       </Box>
      
       <Box >
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Box><LoadingScreen darkMode={darkMode}/></Box>}>
           <Routes>
             <Route path='/' element={<Home darkMode={darkMode}/>}/>
             <Route path='/about' element={<About/>} darkMode={darkMode}/>

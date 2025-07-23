@@ -4,7 +4,7 @@ export const getIDCardStyles = (darkMode, colorPalette) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: '100vh',
+   
     padding: '2rem',
     backgroundColor: darkMode ? '#121212' : '#fafafa',
     color: darkMode ? '#ffffff' : '#000000',
