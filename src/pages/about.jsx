@@ -39,7 +39,8 @@ export default function About({ darkMode }) {
           justifyContent: "space-between",
           alignItems: "center",
           height: "100%",
-          backgroundColor: "green",
+          width: "100%",
+      
         }}
       >
         <Box sx={{ width: "40%" }}>
@@ -50,7 +51,8 @@ export default function About({ darkMode }) {
             width: "60%",
             zIndex: 3,
             height: "30rem",
-            backgroundColor: "red",
+           
+          
           }}
         >
           <CommandPrompt darkMode={darkMode} />
