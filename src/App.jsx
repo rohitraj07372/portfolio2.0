@@ -15,7 +15,12 @@ const Youtube = lazy(() => import("./pages/youtube"));
 
 const App = () => {
   const getInitialDarkMode = () => {
+     
     const saved = sessionStorage.getItem("darkMode");
+      if (saved === null) {
+    
+    return true;
+      }
     return saved === "true";
   };
 

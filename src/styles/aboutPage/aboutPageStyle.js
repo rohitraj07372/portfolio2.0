@@ -6,7 +6,7 @@ export const getAboutStyles = (darkMode) => ({
     position: "relative",
     display: "flex",
     alignItems: "center",
-    width: "100%",
+    height:'calc(100vh - 63px)',
 
     px: 4,
     background: darkMode
