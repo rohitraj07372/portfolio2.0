@@ -14,7 +14,7 @@ export const getAboutStyles = (darkMode) => ({
          radial-gradient(ellipse 50% 20% at 20% 70%, rgba(255, 102, 0, 0.16) 0%, transparent 80%),
          linear-gradient(135deg, #09090f 0%, #181829 60%, #1a130b 100%)`
       : "#fff8a6",
-    overflow: "hidden",
+    overflow: {xs: "visible", md: "hidden"},
     transition: "background 0.4s, color 0.4s",
   },
   terminalSection: {

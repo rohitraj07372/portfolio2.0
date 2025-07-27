@@ -36,6 +36,7 @@ export default function About({ darkMode }) {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
           alignItems: "center",
           height: "100%",
@@ -43,12 +44,12 @@ export default function About({ darkMode }) {
       
         }}
       >
-        <Box sx={{ width: "40%" }}>
+        <Box sx={{  width: { xs: "100%", md: "40%"  }, height: "100%", }}>
           <IdCard darkMode={darkMode} />
         </Box>
         <Box
           sx={{
-            width: "60%",
+            width:  { xs: "100%", md: "60%" },
             zIndex: 3,
             height: "30rem",
            

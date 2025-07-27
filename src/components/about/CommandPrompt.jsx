@@ -2,7 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { Box, Typography, TextField, IconButton } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
+
+const githubLink = import.meta.env.VITE_GITHUB 
+const linkedinLink = import.meta.env.VITE_LINKEDIN;
 const commands = {
   help: `Available commands:
   - about: Info about me
@@ -11,13 +15,110 @@ const commands = {
   - email: Contact me
   - projects: View key MERN projects on GitHub
   - clear: Clear the terminal`,
-  about: `MERN stack developer. Expert in React, Node.js, MongoDB, Express. Passionate about building full-stack web apps.`,
+ about: (
+  <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+        alt="User"
+        width={32}
+        height={32}
+        style={{ borderRadius: 8, background: "#fff" }}
+      />
+      <Typography
+        component="span"
+        sx={{
+          fontWeight: "bold",
+          color: "#00FFD0",
+          fontSize: "0.875rem",
+        }}
+      >
+        Rohit Kumar · Software Engineer
+      </Typography>
+    </Box>
+    <Box sx={{ display: "flex", alignItems: "center", gap: 1, ml: 3 }}>
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/684/684908.png"
+        alt="Graduation cap"
+        width={20}
+        height={20}
+      />
+      <Typography component="span" sx={{ color: "#FFD700", fontSize: "0.875rem" }}>
+        B.Tech in Computer Science, Chandigarh University
+      </Typography>
+    </Box>
+    <Box sx={{ display: "flex", alignItems: "center", gap: 1, ml: 3 }}>
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/684/684908.png"
+        alt="Map Marker"
+        width={20}
+        height={20}
+      />
+      <Typography component="span" sx={{ color: "#00BFFF", fontSize: "0.875rem" }}>
+        <span role="img" aria-label="Location">📍</span> Bihar, Muzaffarpur
+      </Typography>
+    </Box>
+    <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1, ml: 3 }}>
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/1821/1821054.png"
+        alt="Code"
+        width={24}
+        height={24}
+      />
+      <Typography
+        component="span"
+        sx={{ color: "#FFD700", fontSize: "0.875rem" }}
+      >
+        I craft <span style={{ color: "#00FF00", fontWeight: "bold" }}>immersive full-stack experiences</span> with React, Node.js, and MongoDB.
+      </Typography>
+    </Box>
+    <Box sx={{ display: "flex", alignItems: "start", gap: 1, mt: 1, ml: 3 }}>
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/2721/2721090.png"
+        alt="Hobbies"
+        width={20}
+        height={20}
+      />
+      <Box>
+        <Typography component="span" sx={{ color: "#00BFFF", fontWeight: "bold", fontSize: "0.875rem" }}>
+          Hobbies:
+        </Typography>
+        <ul style={{ color: "#FFD700", margin: "2px 0 0 18px", fontSize: "0.85rem", padding: 0 }}>
+          <li>
+            🎨 <span style={{ color: "#00FFB2" }}>Graphic Designing</span> — turning ideas into vibrant visual stories.
+          </li>
+          <li>
+            🚀 <span style={{ color: "#1EC9FF" }}>Exploring New Tech</span> — always searching for the next "aha" moment.
+          </li>
+          <li>
+            🗺️ <span style={{ color: "#FFD700" }}>Mapping Pixels</span> — bringing concepts to life, one creative map at a time.
+          </li>
+        </ul>
+      </Box>
+    </Box>
+    <Typography
+      component="p"
+      sx={{
+        mt: 2,
+        fontSize: "0.85rem",
+        color: "#FFF",
+        background: "rgba(0,255,0,0.07)",
+        p: 1,
+        borderRadius: 1,
+      }}
+    >
+      If you’re looking for someone who combines <span style={{ color: "#FFD700", fontWeight: "bold" }}>technical mastery</span> with a passion for design and continuous
+      exploration, <span style={{ color: "#00FF00" }}>let’s connect!</span>
+    </Typography>
+  </Box>
+),
+
   projects: `- ProjectA: https://github.com/yourprofile/projectA
 - ProjectB: https://github.com/yourprofile/projectB`,
   github: (
     <span>
       <IconButton
-        href="https://github.com/yourprofile"
+        href= {githubLink}
         target="_blank"
         rel="noopener noreferrer"
         size="small"
@@ -30,18 +131,29 @@ const commands = {
         component="span"
         sx={{ color: "#00FF00", ml: 1, fontSize: "0.775rem", verticalAlign: "middle" }}
       >
-        /yourprofile
+        Rohit Kumar
       </Typography>
     </span>
   ),
   linkedin: (
-    <Typography
-      variant="body2"
-      component="span"
-      sx={{ color: "#1E90FF", ml: 1, fontSize: "0.775rem", fontWeight: "bold" }}
-    >
-      /in/yourprofile
-    </Typography>
+   <span>
+      <IconButton
+        href= {linkedinLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        size="small"
+        sx={{ p: 0, verticalAlign: "middle" }}
+      >
+        <LinkedInIcon sx={{ color: "#0088ffff", fontSize: 20 }} />
+      </IconButton>
+      <Typography
+        variant="body2"
+        component="span"
+        sx={{ color: "#0088ffff", ml: 1, fontSize: "0.775rem", verticalAlign: "middle" }}
+      >
+        Rohit Kumar
+      </Typography>
+    </span>
   ),
   email: (
     <span>
@@ -53,7 +165,7 @@ const commands = {
         component="span"
         sx={{ color: "#FFD700", ml: 1, fontSize: "0.775rem", verticalAlign: "middle", fontWeight: "bold" }}
       >
-        youremail@example.com
+        rohit.kumar053803@gmail.com
       </Typography>
     </span>
   ),
@@ -184,7 +296,7 @@ const Terminal = ({ darkMode }) => {
         
       }}
     >
-      <Typography sx={{ mb: 1, userSelect: "none", color: "#FFD700" /* golden for instructions */ }}>
+      <Typography sx={{ mb: 1, userSelect: "none", fontsize:"775rem",  color: "#FFD700" /* golden for instructions */ }}>
         Type 'help' to know more
       </Typography>
 
@@ -209,8 +321,8 @@ const Terminal = ({ darkMode }) => {
           </Typography>
         )}
         {history.map((item, idx) => (
-          <Box key={idx} sx={{ mb: 1 }}>
-            <Typography sx={{ color: "#00FF00", mb: 0.3 }}>
+          <Box key={idx} sx={{ mb: .5 }}>
+            <Typography sx={{ color: "#00FF00", mb: 0.3, fontSize: "0.775rem" }}>
               user@rohit&gt; {item.cmd}
             </Typography>
             <Box sx={{ ml: 2 }}>
@@ -234,7 +346,7 @@ const Terminal = ({ darkMode }) => {
          
         }}
       >
-        <Typography sx={{ color: "#00FF00" }}>
+        <Typography sx={{ color: "#00FF00", fontsixe: "0.775rem", fontFamily: "monospace" }}>
         user@rohit&gt;
         </Typography>
         <TextField

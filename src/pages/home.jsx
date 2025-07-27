@@ -60,7 +60,7 @@ const Home = ({ darkMode }) => {
             ROHIT
           </Typography>
           <Typography variant="h3" fontWeight="bold" color="primary">
-            A Software Developer
+            Software Engineer
           </Typography>
           <Typography
             color="primary"
