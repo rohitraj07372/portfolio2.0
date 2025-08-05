@@ -41,7 +41,7 @@ export default function About({ darkMode }) {
           alignItems: "center",
           height: "100%",
           width: "100%",
-      
+  
         }}
       >
         <Box sx={{  width: { xs: "100%", md: "40%"  }, height: "100%", }}>
