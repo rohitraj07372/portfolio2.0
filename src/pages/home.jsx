@@ -14,7 +14,8 @@ import css from "../assets/tech/css.png";
 import next from "../assets/tech/next.png";
 import sql from "../assets/tech/sql.png";
 import { useNavigate } from "react-router-dom";
-import Particles from "../components/particleBackground/Particle";
+// import Particles from "../components/particleBackground/Particle";
+import LightRays from "../components/LightRays/LightRays";
 
 const Home = ({ darkMode }) => {
   const isMobile = useMediaQuery("(max-width:768px)");
@@ -32,7 +33,7 @@ const Home = ({ darkMode }) => {
             height: "100%",
           }}
         >
-          <Particles
+          {/* <Particles
             particleColors={["#ffffff", "#ffffff"]}
             particleCount={200}
             particleSpread={8}
@@ -41,7 +42,22 @@ const Home = ({ darkMode }) => {
             moveParticlesOnHover={true}
             alphaParticles={false}
             disableRotation={false}
-          />
+          /> */}
+          
+ 
+  <LightRays
+    raysOrigin="top-center"
+    raysColor="#00ffff"
+    raysSpeed={1.5}
+    lightSpread={0.8}
+    rayLength={1.2}
+    followMouse={true}
+    mouseInfluence={0.2}
+    noiseAmount={0.1}
+    distortion={0.05}
+    className="custom-rays"
+  />
+ 
         </Box>
       )}
       <Box

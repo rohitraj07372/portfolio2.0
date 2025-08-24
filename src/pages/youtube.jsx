@@ -1,17 +1,33 @@
-import React, { useState, useEffect } from 'react';
- 
-import { useYoutubePlaylist } from '../services/youtube/youtubeServices';
-import VideoPlayer from '../components/Youtube/VideoPlayer';
-import VideoSidebar from '../components/Youtube/VideoSidebar';
- 
-import { Box, Grid, Typography, CircularProgress } from '@mui/material';
-import YoutubeHeader from '../components/Youtube/YoutubeHeader';
+import React, { useState, useEffect } from "react";
+import { useYoutubePlaylist } from "../services/youtube/youtubeServices";
+import VideoPlayer from "../components/Youtube/VideoPlayer";
+import VideoSidebar from "../components/Youtube/VideoSidebar";
+import YoutubeHeader from "../components/Youtube/YoutubeHeader";
 
-const PLAYLIST_ID = 'UUhUYAjYRl9dTtna5ZET3E5Q';
+import {
+  Box,
+  Grid,
+  Typography,
+  CircularProgress,
+  Avatar,
+  Button,
+} from "@mui/material";
+import {
+  palette,
+  containerStyles,
+  videoInfoStyles,
+  channelStyles,
+  dateStyles,
+} from "../styles/youtube/style.js";
+
+const PLAYLIST_ID = "UUhUYAjYRl9dTtna5ZET3E5Q";
 
 function Youtube() {
-  const { data: videos, isLoading } = useYoutubePlaylist(PLAYLIST_ID);
+  const { data: videos, isLoading, search } = useYoutubePlaylist(PLAYLIST_ID);
   const [selectedVideoId, setSelectedVideoId] = useState(null);
+console.log("data from youtube", videos);
+  const mode = sessionStorage.getItem("darkMode") === "true" ? "dark" : "light";
+  const colors = palette[mode];
 
   useEffect(() => {
     if (!selectedVideoId && videos && videos.length) {
@@ -19,33 +35,93 @@ function Youtube() {
     }
   }, [videos, selectedVideoId]);
 
-  if (isLoading) return <CircularProgress sx={{ mt: 4 }} />;
+  if (isLoading)
+    return (
+      <CircularProgress sx={{ mt: 4, mx: "auto", display: "block" }} />
+    );
   if (!videos) return <Typography>No videos found.</Typography>;
 
-  const selectedVideo = videos.find(v => v.snippet.resourceId.videoId === selectedVideoId);
+  const selectedVideo = videos.find(
+    (v) => v.snippet.resourceId.videoId === selectedVideoId
+  );
 
   return (
-    <Box sx={{ bgcolor: "#121212", height: "100%", p: 3,   }}>
-        <YoutubeHeader/>
-      <Grid container spacing={5}>
-        <Grid size={{ xs: 12, md: 8 }}>
+    <Box sx={containerStyles(colors)}>
+      <YoutubeHeader mode={mode} onSearch={search} />
+ 
+      <Grid container spacing={4} sx={{ py: 2, px: 4 }}>
+        <Grid size={{xs:12, md:8}} >
           {selectedVideoId && (
             <>
-              <VideoPlayer videoId={selectedVideoId} />
-              <Typography sx={{ mt: 2, color: "#fff" }} variant="h6">
+              {/* Player */}
+              <VideoPlayer videoId={selectedVideoId} mode={mode} />
+
+              {/* Video Title */}
+              <Typography
+                sx={{ ...videoInfoStyles(colors), mt: .5, fontWeight: 600 }}
+                 
+              >
                 {selectedVideo?.snippet.title}
               </Typography>
-              <Typography sx={{ color: "#bbb" }}>
-                {selectedVideo?.snippet.channelTitle}
-              </Typography>
-              <Typography sx={{ color: "#999", mt: 1 }}>
-                {selectedVideo?.snippet.publishedAt && new Date(selectedVideo.snippet.publishedAt).toLocaleString()}
-              </Typography>
+
+              {/* Channel Row */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap:3,
+                  mt: .5,
+                  
+                }}
+              >
+                {/* Left Side - Channel info */}
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                  <Avatar
+                    alt={selectedVideo?.snippet.channelTitle}
+                    src={`https://yt3.ggpht.com/ytc/${selectedVideo?.snippet.channelId}=s88-c-k-c0x00ffffff-no-rj`}
+                  />
+                  <Box>
+                    <Typography
+                      sx={{ fontWeight: 500, color: colors.title }}
+                    >
+                      {selectedVideo?.snippet.channelTitle}
+                    </Typography>
+                    <Typography sx={{ fontSize: "13px", color: colors.date }}>
+                      {selectedVideo?.snippet.publishedAt &&
+                        new Date(
+                          selectedVideo.snippet.publishedAt
+                        ).toLocaleDateString()}
+                    </Typography>
+                  </Box>
+                </Box>
+
+                {/* Right Side - Subscribe */}
+                <Button
+                  variant="contained"
+                  sx={{
+                    bgcolor: "#b1b1b1ff",
+                    color: "#292929ff",
+                    textTransform: "none",
+                    fontWeight: 600,
+                    "&:hover": { bgcolor: "#e60000", color: "#fff" },
+                    borderRadius: "9999px",
+                    width: '10rem',
+                    height: '40px',
+                    alignSelf: "flex-start"
+
+                  }}
+                >
+                  Subscribe
+                </Button>
+              </Box>
             </>
           )}
         </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
+
+        {/* Sidebar */}
+        <Grid size={{xs:12, md:4}}  >
           <VideoSidebar
+            mode={mode}
             videos={videos}
             onSelect={setSelectedVideoId}
             selectedId={selectedVideoId}

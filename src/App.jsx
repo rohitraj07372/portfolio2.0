@@ -5,12 +5,13 @@ import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Box from "@mui/material/Box";
 import { useState } from "react";
-import SplashCursor from "./components/SplashCursor/SplashCursor";
+// import SplashCursor from "./components/SplashCursor/SplashCursor";
 import Butterfly from "./components/Butterfly/Butterfly";
 import LoadingScreen from "./components/fallback/FallbackScreen";
 const Home = lazy(() => import("./pages/home"));
 const About = lazy(() => import("./pages/about"));
 const ContactUs = lazy(() => import("./pages/contactUs"));
+const Projects = lazy(() => import("./pages/projects"));
 const Youtube = lazy(() => import("./pages/youtube"));
 
 const App = () => {
@@ -34,8 +35,10 @@ const App = () => {
   };
 
   return (
-    <Box sx={{ width: "100vw", height: "100vh" }}>
-      {darkMode && <SplashCursor />}
+    <Box sx={{ width: "100vw", height: "100vh", position: "relative",   overflow: { xs: "auto", md: "hidden" }, background: darkMode ? `radial-gradient(ellipse 60% 30% at 70% 15%, rgba(0, 30, 60, 0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 20% at 20% 70%, rgba(0, 100, 140, 0.12) 0%, transparent 80%),
+    linear-gradient(135deg, #041e46ff 0%, #0c0e0fff 60%, #000b1a 100%)`: "#fff" }}>
+      {/* {darkMode && <SplashCursor />} */}
       <Box sx={{ position: "sticky", top: 0, zIndex: 100 }}>
         <Navbar
           darkMode={darkMode}
@@ -62,6 +65,12 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home darkMode={darkMode} />} />
             <Route path="/about" element={<About darkMode={darkMode} />} />
+            <Route
+              path="/projects"
+              element={
+                <Projects darkMode={darkMode} />}
+            />
+              
             <Route
               path="/contact"
               element={<ContactUs darkMode={darkMode} />}

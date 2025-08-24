@@ -1,7 +1,8 @@
 export const getNavbarStyles = (darkMode, colorPalette) => ({
   navBar: {
-    backgroundColor: darkMode ? 'rgba(27, 27, 27, 0.94)' : colorPalette.primary.main,
-    color: darkMode ? '#fff' : '#000',
+    background : darkMode ?  ` 
+    linear-gradient(135deg, #011025ff 0%, #001d3d 60%, #000b1a 100%)` : colorPalette.primary.main,
+    color: darkMode ? '#5590ccff' : '#000',
     transition: 'all 0.5s ease',
     padding: '10px 20px',
     display: 'flex',
@@ -25,9 +26,9 @@ export const getNavbarStyles = (darkMode, colorPalette) => ({
     color: 'inherit',
   },
   activeItem: {
-    backgroundColor: darkMode ? '#333' : '#f4b003ff',
-    boxShadow: 'inset 0 2px 2px rgba(0, 0, 0, 0.6)',
-    color: darkMode ? '#fff' : '#624700ff',
+    backgroundColor: darkMode ? '#00071dff' : '#f4b003ff',
+    boxShadow: 'inset 0 2px 2px rgba(0, 0, 0, 0.7)',
+    color: darkMode ? '#2089c5ff' : '#624700ff',
   },
   socialIcons: {
     display: 'flex',
@@ -38,7 +39,7 @@ export const getNavbarStyles = (darkMode, colorPalette) => ({
     fontSize: '1.4rem',
     fontWeight: 'bold',
      
-    color: darkMode ? '#fff' : '#000',
+    color: darkMode ? '#0777aaff' : '#000',
   },
   profileImg: {
     width: 35,

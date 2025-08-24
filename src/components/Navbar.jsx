@@ -30,7 +30,7 @@ const Navbar = ({ menuItems, socialLinks, darkMode, toggleTheme }) => {
   // const toggleTheme = () => setDarkMode(!darkMode);
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
-  const iconColor = darkMode ? '#fff' : '#000';
+  const iconColor = darkMode ? '#0078afff' : '#000';
 
   return (
     <>
@@ -68,7 +68,7 @@ const Navbar = ({ menuItems, socialLinks, darkMode, toggleTheme }) => {
         {!isMobile && (
           <Box sx={styles.socialIcons}>
             <IconButton onClick={() => window.open(socialLinks.linkedin)}>
-              <LinkedInIcon sx={{ color: iconColor }} />
+              <LinkedInIcon sx={{ color: iconColor,  }} />
             </IconButton>
             <IconButton onClick={() => window.open(socialLinks.github)}>
               <GitHub sx={{ color: iconColor }} />
@@ -108,12 +108,12 @@ const Navbar = ({ menuItems, socialLinks, darkMode, toggleTheme }) => {
               <Box sx={{ borderRadius: '50%', overflow: 'hidden', width: 30, height: 30 }}>
                 <img src={profile3} alt="logo" style={{ width: '100%', height: '100%' }} />
               </Box>
-              <Typography fontWeight="bold" sx={{ color: darkMode ? '#fff' : '#000' }}>
+              <Typography fontWeight="bold" sx={{ color: darkMode ? '#0da3faff' : '#000' }}>
                 Rohit Kumar
               </Typography>
             </Box>
             <IconButton onClick={toggleTheme}>
-              {darkMode ? <Brightness7 sx={{ color: '#fff' }} /> : <Brightness4 sx={{ color: '#000' }} />}
+              {darkMode ? <Brightness7 sx={{ color: '#0060a0ff' }} /> : <Brightness4 sx={{ color: '#000' }} />}
             </IconButton>
           </Box>
 

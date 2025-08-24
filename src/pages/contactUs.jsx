@@ -5,7 +5,7 @@ import { useSendContactEmail } from '../services/contactUs/contactUsServices';
 import Particles from '../components/particleBackground/Particle';
 import { colorPalette } from '../styles/colorPallet/colors';
 import Lottie from 'lottie-react';
-
+import LightRays from '../components/LightRays/LightRays';
 import contactUs from '../assets/contact/contactUs.json';  
 import  astronaut from "../assets/contact/astronaut.json";
 
@@ -76,7 +76,19 @@ const ContactPage = ({ darkMode }) => {
             height: '100%',
           }}
         >
-          <Particles
+          <LightRays
+    raysOrigin="top-center"
+    raysColor="#00ffff"
+    raysSpeed={1.5}
+    lightSpread={0.8}
+    rayLength={1.2}
+    followMouse={true}
+    mouseInfluence={0.1}
+    noiseAmount={0.1}
+    distortion={0.05}
+    className="custom-rays"
+  />
+          {/* <Particles
             particleColors={['#ffffff', '#ffffff']}
             particleCount={150}
             particleSpread={8}
@@ -85,7 +97,7 @@ const ContactPage = ({ darkMode }) => {
             moveParticlesOnHover={true}
             alphaParticles={false}
             disableRotation={false}
-          />
+          /> */}
         </Box>
       )}
       <Box

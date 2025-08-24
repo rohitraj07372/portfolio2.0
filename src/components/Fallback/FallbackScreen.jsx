@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Typography, Skeleton, useTheme } from '@mui/material';
+import { Box, Typography, Skeleton, CircularProgress } from '@mui/material';
 
 const LoadingScreen = ({ darkMode }) => {
   // Colors adjusting for dark/light theme
-  const backgroundColor = darkMode ? '#121212' : '#fff8a6';
-  const textColor = darkMode ? '#fff' : '#333';
+  const backgroundColor = darkMode ? '#0f0f0f' : '#ffffff';
+  const textColor = darkMode ? '#f1f1f1' : '#202020';
+  const skeletonBg = darkMode ? 'grey.900' : 'grey.200';
 
   return (
     <Box
@@ -18,84 +19,97 @@ const LoadingScreen = ({ darkMode }) => {
         color: textColor,
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         p: 4,
         overflow: 'hidden',
         zIndex: 1400,
       }}
     >
-      {/* Title skeleton */}
-      <Skeleton
-        variant="text"
-        width={240}
-        height={48}
-        sx={{ mb: 3, bgcolor: darkMode ? 'grey.800' : 'grey.300' }}
-      />
-
-      {/* Subtitle skeleton */}
-      <Skeleton
-        variant="text"
-        width={180}
-        height={24}
-        sx={{ mb: 5, bgcolor: darkMode ? 'grey.800' : 'grey.300' }}
-      />
-
-      {/* Content block skeletons */}
+      {/* Simulated top bar like YouTube */}
       <Box
         sx={{
-          display: 'flex',
-          gap: 4,
           width: '100%',
-          maxWidth: 600,
-          justifyContent: 'center',
+          height: 56,
+          display: 'flex',
+          alignItems: 'center',
+          px: 2,
+          borderBottom: `1px solid ${darkMode ? '#303030' : '#e0e0e0'}`,
         }}
       >
-        {/* Media skeleton */}
-        <Skeleton
-          variant="rectangular"
-          width={150}
-          height={150}
-          sx={{ borderRadius: 2, bgcolor: darkMode ? 'grey.800' : 'grey.300' }}
-        />
-
-        {/* Text block skeleton */}
-        <Box sx={{ flex: 1 }}>
-          <Skeleton
-            variant="text"
-            width="80%"
-            height={30}
-            sx={{ mb: 2, bgcolor: darkMode ? 'grey.800' : 'grey.300' }}
-          />
-          <Skeleton
-            variant="text"
-            width="60%"
-            height={24}
-            sx={{ mb: 2, bgcolor: darkMode ? 'grey.800' : 'grey.300' }}
-          />
-          <Skeleton
-            variant="text"
-            width="90%"
-            height={24}
-            sx={{ bgcolor: darkMode ? 'grey.800' : 'grey.300' }}
-          />
-        </Box>
+        {/* Fake logo placeholder */}
+        <Skeleton variant="rectangular" width={90} height={28} sx={{ bgcolor: skeletonBg, borderRadius: 1 }} />
       </Box>
 
-      {/* Optional footer loading text */}
-      <Typography
-        variant="subtitle1"
-        mt={6}
+      {/* Content area like YouTube home loading */}
+      <Box
         sx={{
-          animation: 'pulse 2.5s ease-in-out infinite',
-          '@keyframes pulse': {
-            '0%, 100%': { opacity: 1 },
-            '50%': { opacity: 0.5 },
-          },
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+          gap: 3,
+          mt: 4,
+          width: '100%',
+          maxWidth: 1200,
         }}
       >
-        Loading content, please wait...
-      </Typography>
+        {[...Array(6)].map((_, i) => (
+          <Box key={i}>
+            {/* Video thumbnail */}
+            <Skeleton
+              variant="rectangular"
+              width="100%"
+              height={160}
+              sx={{ borderRadius: 2, bgcolor: skeletonBg, mb: 1 }}
+            />
+            {/* Video title */}
+            <Skeleton
+              variant="text"
+              width="80%"
+              height={28}
+              sx={{ bgcolor: skeletonBg, mb: 1 }}
+            />
+            {/* Channel name */}
+            <Skeleton
+              variant="text"
+              width="50%"
+              height={20}
+              sx={{ bgcolor: skeletonBg }}
+            />
+          </Box>
+        ))}
+      </Box>
+
+      {/* Center circular loader */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <CircularProgress
+          thickness={4}
+          size={48}
+          sx={{ color: darkMode ? '#f1f1f1' : '#202020', mb: 2 }}
+        />
+        <Typography
+          variant="subtitle1"
+          sx={{
+            fontWeight: 500,
+            opacity: 0.7,
+            animation: 'pulse 2s ease-in-out infinite',
+            '@keyframes pulse': {
+              '0%, 100%': { opacity: 0.7 },
+              '50%': { opacity: 0.3 },
+            },
+          }}
+        >
+          Loading content...
+        </Typography>
+      </Box>
     </Box>
   );
 };
