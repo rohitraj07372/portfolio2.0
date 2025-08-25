@@ -20,7 +20,7 @@ export default function About({ darkMode }) {
           sx={{
             position: "absolute",
             inset: 0,
-            zIndex: 2,
+            zIndex: 0,
           }}
         >
           <LightRays

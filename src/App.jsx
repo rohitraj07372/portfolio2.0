@@ -34,6 +34,8 @@ const App = () => {
     });
   };
 
+  
+
   return (
     <Box sx={{ width: "100vw", height: "100vh", position: "relative",   overflow: { xs: "auto", md: "hidden" }, background: darkMode ? `radial-gradient(ellipse 60% 30% at 70% 15%, rgba(0, 30, 60, 0.25) 0%, transparent 70%),
     radial-gradient(ellipse 50% 20% at 20% 70%, rgba(0, 100, 140, 0.12) 0%, transparent 80%),

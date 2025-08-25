@@ -7,7 +7,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import profile from "../../assets/resume_profile.jpg";
+import profile from "../../assets/profile1.jpg";
 
 // Keyframes for heart flying animation
 const style = `
@@ -77,7 +77,7 @@ const InstagramPostCard = ({darkMode}) => {
         height: "100%",
         p: 2,
         boxSizing: "border-box",
-        bgcolor: darkMode?  "rgba(0, 79, 99, 0.53)" :"rgb(253,241,241)",
+        bgcolor: darkMode?  "rgba(0, 53, 66, 0.53)" :"rgb(253,241,241)",
         borderRadius: 3,
         boxShadow: "0 0 24px rgba(255,40,80,0.13)",
         overflow: "hidden",
@@ -104,7 +104,7 @@ const InstagramPostCard = ({darkMode}) => {
           <Box sx={{
             display: "flex",
             alignItems: "center",
-            p: 2,
+           
             
             pb: 1.1,
             zIndex: 11,
@@ -136,7 +136,7 @@ const InstagramPostCard = ({darkMode}) => {
           <Box sx={{
             width: "100%",
             height: 260,
-            background: darkMode?"#005f85a8" :"#e5e5ef",
+            background: darkMode?"#00364ba8" :"#e5e5ef",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

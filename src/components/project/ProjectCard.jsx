@@ -42,7 +42,7 @@ export default function ProjectCard({
   };
 
   return (
-    <Card sx={{ ...cardStyles, borderRadius: 4 }}>
+    <Card sx={{ ...cardStyles, borderRadius: 2,   }}>
       {image && (
         <CardMedia
           component="img"
@@ -51,7 +51,8 @@ export default function ProjectCard({
           sx={{
             height: 170,
             objectFit: 'cover',
-            borderRadius: '1rem 1rem 0 0'
+            borderRadius: '.5rem .5rem 0 0',
+            width: '100%',
           }}
         />
       )}
