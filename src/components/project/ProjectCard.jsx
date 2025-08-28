@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -6,22 +6,23 @@ import {
   Typography,
   Chip,
   Button,
-  Accordion,
-  AccordionSummary,
-AccordionDetails,
   Stack,
-  useTheme
-} from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import CodeIcon from '@mui/icons-material/Code';
-import LaunchIcon from '@mui/icons-material/Launch';
-
+  useTheme,
+  Box,
+  IconButton,
+  Collapse,
+} from "@mui/material";
+import CodeIcon from "@mui/icons-material/Code";
+import LaunchIcon from "@mui/icons-material/Launch";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ElectricBorder from "../electricBorder/ElectricBorder";
 const techColors = {
-  React: 'primary',
-  TypeScript: 'info',
-  'Tailwind CSS': 'success',
-  'Framer Motion': 'secondary',
-  Vite: 'warning'
+  React: "primary",
+  TypeScript: "info",
+  "Tailwind CSS": "success",
+  "Framer Motion": "secondary",
+  Vite: "warning",
 };
 
 export default function ProjectCard({
@@ -32,89 +33,333 @@ export default function ProjectCard({
   details,
   codeLink,
   liveDemoLink,
-  darkMode = false
+  darkMode = false,
 }) {
   const theme = useTheme();
+  const [showDetails, setShowDetails] = useState(false);
 
   const cardStyles = {
-    background: darkMode ? theme.palette.grey[900] : theme.palette.grey,
-    color: darkMode ? theme.palette.grey : theme.palette.grey
+    background: darkMode ? "#00335c0a" : "#b97f0293",
+    color: darkMode ? theme.palette.grey[100] : theme.palette.grey[900],
+    position: "relative",
+    borderRadius: 2,
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   };
 
   return (
-    <Card sx={{ ...cardStyles, borderRadius: 2,   }}>
-      {image && (
-        <CardMedia
-          component="img"
-          image={image}
-          alt={title}
+      darkMode? ( <ElectricBorder
+      color="#7df9ff"
+      speed={1}
+      chaos={0.5}
+      thickness={2}
+      style={{ borderRadius: 16 }}
+    >
+        <Card sx={cardStyles}>
+          {/* Image with Overlay */}
+          <Box
+            sx={{
+              position: "relative",
+              overflow: "hidden",
+              "&:hover img": {
+                transform: "scale(1.08)",
+              },
+              "&:hover .overlay": {
+                opacity: 1,
+                visibility: "visible",
+              },
+            }}
+          >
+            {image && (
+              <CardMedia
+                component="img"
+                image={image}
+                alt={title}
+                sx={{
+                  height: 180,
+                  width: "100%",
+                  objectFit: "cover",
+                  transition: "transform 0.4s ease-in-out",
+                }}
+              />
+            )}
+
+            {/* Overlay Icons */}
+            <Box
+              className="overlay"
+              sx={{
+                position: "absolute",
+                top: 6,
+                right: 6,
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "start",
+                justifyContent: "flex-end",
+                gap: 2,
+                opacity: 0,
+                visibility: "hidden",
+                transition: "all 0.3s ease-in-out",
+              }}
+            >
+              {codeLink && (
+                <IconButton
+                  href={codeLink}
+                  target="_blank"
+                  sx={{
+                    bgcolor: "white",
+                    "&:hover": { bgcolor: "#ddd" },
+                  }}
+                >
+                  <GitHubIcon />
+                </IconButton>
+              )}
+              {liveDemoLink && (
+                <IconButton
+                  href={liveDemoLink}
+                  target="_blank"
+                  sx={{
+                    bgcolor: "white",
+                    "&:hover": { bgcolor: "#ddd" },
+                  }}
+                >
+                  <LaunchIcon />
+                </IconButton>
+              )}
+            </Box>
+          </Box>
+
+          {/* Card Content */}
+          <CardContent sx={{ color: darkMode ? "#01536870" : "#815f0083", flexGrow: 1 }}>
+            <Typography variant="h6" fontWeight={700} gutterBottom>
+              {title}
+            </Typography>
+            <Typography variant="body2" sx={{ opacity: 0.8, mb: 1 }}>
+              {description}
+            </Typography>
+
+            {/* Smoothly collapsed details */}
+            {details && (
+              <Collapse in={showDetails} timeout="auto" unmountOnExit>
+                <Typography variant="body2" sx={{ opacity: 0.8, mb: 2 }}>
+                  {details}
+                </Typography>
+              </Collapse>
+            )}
+
+            {/* Tags */}
+            <Stack direction="row" spacing={1} sx={{ flexWrap: "wrap" }}>
+              {tags.map((tag) => (
+                <Chip
+                  key={tag}
+                  label={tag}
+                  color={techColors[tag] || "default"}
+                  size="small"
+                  sx={{
+                    bgcolor: darkMode ? "#00335c79" : "#ad760070",
+                    color: "#fff",
+                  }}
+                />
+              ))}
+            </Stack>
+          </CardContent>
+
+          {/* Buttons aligned horizontally at bottom */}
+          <Box sx={{ px: 2, pb: 2 }}>
+            <Stack direction="row" spacing={2} justifyContent="flex-start" alignItems="center">
+              {details && (
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  startIcon={<ExpandMoreIcon />}
+                  onClick={() => setShowDetails((prev) => !prev)}
+                  sx={{ textTransform: "none", borderRadius: 16, fontWeight: 600 }}
+                >
+                  {showDetails ? "Hide Details" : "View Details"}
+                </Button>
+              )}
+
+              {codeLink && (
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  startIcon={<CodeIcon />}
+                  href={codeLink}
+                  target="_blank"
+                  sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" }}
+                >
+                  Code
+                </Button>
+              )}
+
+              {liveDemoLink && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<LaunchIcon />}
+                  href={liveDemoLink}
+                  target="_blank"
+                  sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" }}
+                >
+                  Live Demo
+                </Button>
+              )}
+            </Stack>
+          </Box>
+        </Card>
+        </ElectricBorder>):( <Card sx={cardStyles}>
+      {/* Image with Overlay */}
+      <Box
+        sx={{
+          position: "relative",
+          overflow: "hidden",
+          "&:hover img": {
+            transform: "scale(1.08)",
+          },
+          "&:hover .overlay": {
+            opacity: 1,
+            visibility: "visible",
+          },
+        }}
+      >
+        {image && (
+          <CardMedia
+            component="img"
+            image={image}
+            alt={title}
+            sx={{
+              height: 180,
+              width: "100%",
+              objectFit: "cover",
+              transition: "transform 0.4s ease-in-out",
+            }}
+          />
+        )}
+
+        {/* Overlay Icons */}
+        <Box
+          className="overlay"
           sx={{
-            height: 170,
-            objectFit: 'cover',
-            borderRadius: '.5rem .5rem 0 0',
-            width: '100%',
+            position: "absolute",
+            top: 6,
+            right: 6,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "start",
+            justifyContent: "flex-end",
+            gap: 2,
+            opacity: 0,
+            visibility: "hidden",
+            transition: "all 0.3s ease-in-out",
           }}
-        />
-      )}
-      <CardContent>
-        <Typography variant="h6" component="div" fontWeight={700} gutterBottom>
+        >
+          {codeLink && (
+            <IconButton
+              href={codeLink}
+              target="_blank"
+              sx={{
+                bgcolor: "white",
+                "&:hover": { bgcolor: "#ddd" },
+              }}
+            >
+              <GitHubIcon />
+            </IconButton>
+          )}
+          {liveDemoLink && (
+            <IconButton
+              href={liveDemoLink}
+              target="_blank"
+              sx={{
+                bgcolor: "white",
+                "&:hover": { bgcolor: "#ddd" },
+              }}
+            >
+              <LaunchIcon />
+            </IconButton>
+          )}
+        </Box>
+      </Box>
+
+      {/* Card Content */}
+      <CardContent sx={{ color: darkMode ? "#86f1ffff" : "#533d00c5", flexGrow: 1 }}>
+        <Typography variant="h6" fontWeight={700} gutterBottom>
           {title}
         </Typography>
-        <Typography variant="body2" sx={{ opacity: 0.8 }}>
+        <Typography variant="body2" sx={{ opacity: 0.8, mb: 1 }}>
           {description}
         </Typography>
-        <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: 'wrap' }}>
-          {tags.map(tag => (
+
+        {/* Smoothly collapsed details */}
+        {details && (
+          <Collapse in={showDetails} timeout="auto" unmountOnExit>
+            <Typography variant="body2" sx={{ opacity: 0.8, mb: 2 }}>
+              {details}
+            </Typography>
+          </Collapse>
+        )}
+
+        {/* Tags */}
+        <Stack direction="row" spacing={1} sx={{ flexWrap: "wrap" }}>
+          {tags.map((tag) => (
             <Chip
               key={tag}
               label={tag}
-              color={techColors[tag] || 'default'}
+              color={techColors[tag] || "default"}
               size="small"
               sx={{
-                bgcolor: darkMode ? theme.palette.grey[800] : theme.palette.grey
+                bgcolor: darkMode ? "#00335c0e" : "#ad76004b",
+                color: "#fff",
               }}
             />
           ))}
         </Stack>
-        <Accordion sx={{ mt: 2, bgcolor: 'transparent', boxShadow: 'none' }}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Button variant="outlined" color="primary">
-              View Details
+      </CardContent>
+
+      {/* Buttons aligned horizontally at bottom */}
+      <Box sx={{ px: 2, pb: 2 }}>
+        <Stack direction="row" spacing={2} justifyContent="flex-start" alignItems="center">
+          {details && (
+            <Button
+              variant="outlined"
+              color="primary"
+              startIcon={<ExpandMoreIcon />}
+              onClick={() => setShowDetails((prev) => !prev)}
+              sx={{ textTransform: "none", borderRadius: 16, fontWeight: 600 }}
+            >
+              {showDetails ? "Hide Details" : "View Details"}
             </Button>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="body2" sx={{ opacity: 0.8 }}>
-              {details}
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
+          )}
+
           {codeLink && (
             <Button
+              variant="contained"
+              color="secondary"
+              startIcon={<CodeIcon />}
               href={codeLink}
               target="_blank"
-              startIcon={<CodeIcon />}
-              variant="text"
-              color="secondary"
-              sx={{ textTransform: 'none' }}
+              sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" }}
             >
               Code
             </Button>
           )}
+
           {liveDemoLink && (
             <Button
-              href={liveDemoLink}
-              target="_blank"
-              startIcon={<LaunchIcon />}
               variant="contained"
               color="primary"
-              sx={{ textTransform: 'none' }}
+              startIcon={<LaunchIcon />}
+              href={liveDemoLink}
+              target="_blank"
+              sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" }}
             >
               Live Demo
             </Button>
           )}
         </Stack>
-      </CardContent>
-    </Card>
+      </Box>
+    </Card>)
   );
 }

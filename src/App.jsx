@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Box from "@mui/material/Box";
@@ -33,13 +33,17 @@ const App = () => {
       return newValue;
     });
   };
+ 
+  const location = useLocation();
 
-  
+   
+  const rootOverflow =
+    location.pathname === "/projects" ? "auto" : { xs: "auto", md: "hidden" };
 
   return (
-    <Box sx={{ width: "100vw", height: "100vh", position: "relative",   overflow: { xs: "auto", md: "hidden" }, background: darkMode ? `radial-gradient(ellipse 60% 30% at 70% 15%, rgba(0, 30, 60, 0.25) 0%, transparent 70%),
+    <Box sx={{ width: "100vw", height: "100vh", position: "relative",   overflow:rootOverflow, background: darkMode ? `radial-gradient(ellipse 60% 30% at 70% 15%, rgba(0, 30, 60, 0.25) 0%, transparent 70%),
     radial-gradient(ellipse 50% 20% at 20% 70%, rgba(0, 100, 140, 0.12) 0%, transparent 80%),
-    linear-gradient(135deg, #041e46ff 0%, #0c0e0fff 60%, #000b1a 100%)`: "#fff" }}>
+    linear-gradient(135deg, #041e46ff 0%, #0c0e0fff 60%, #000b1a 100%)`: "#ffe46dff" }}>
       {/* {darkMode && <SplashCursor />} */}
       <Box sx={{ position: "sticky", top: 0, zIndex: 100 }}>
         <Navbar

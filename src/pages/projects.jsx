@@ -43,7 +43,7 @@ const projects = ({darkMode}) => {
   rquewiyruf]]]."
   codeLink="https://github.com/example/repo"
   liveDemoLink="https://demo.example.com"
-  darkMode={true}
+  darkMode ={darkMode}
 />
               </Grid>
              </Grid>
