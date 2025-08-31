@@ -113,7 +113,7 @@ const ContactPage = ({ darkMode }) => {
           Contact Us
         </Typography>
         <Typography sx={{ mb: 2, color: darkMode ? '#e7e7ff' : '#444' }}>
-          We'd love to connect with you.  
+          I would love to connect with you.  
         </Typography>
         <form onSubmit={handleSubmit} style={{ width: '100%' }}>
           <TextField

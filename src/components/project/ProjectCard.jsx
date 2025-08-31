@@ -11,8 +11,9 @@ import {
   Box,
   IconButton,
   Collapse,
+  
 } from "@mui/material";
-import CodeIcon from "@mui/icons-material/Code";
+  
 import LaunchIcon from "@mui/icons-material/Launch";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -39,8 +40,8 @@ export default function ProjectCard({
   const [showDetails, setShowDetails] = useState(false);
 
   const cardStyles = {
-    background: darkMode ? "#00335c0a" : "#b97f0293",
-    color: darkMode ? theme.palette.grey[100] : theme.palette.grey[900],
+    background: darkMode ? "#0a90fd0a" : "#b97f0293",
+    color: darkMode ? "#0a90fdde"  : theme.palette.grey[900],
     position: "relative",
     borderRadius: 2,
     overflow: "hidden",
@@ -132,7 +133,7 @@ export default function ProjectCard({
           </Box>
 
           {/* Card Content */}
-          <CardContent sx={{ color: darkMode ? "#01536870" : "#815f0083", flexGrow: 1 }}>
+          <CardContent sx={{ color: darkMode ? "#76e4ffd8" : "#312300ff", flexGrow: 1 }}>
             <Typography variant="h6" fontWeight={700} gutterBottom>
               {title}
             </Typography>
@@ -143,7 +144,7 @@ export default function ProjectCard({
             {/* Smoothly collapsed details */}
             {details && (
               <Collapse in={showDetails} timeout="auto" unmountOnExit>
-                <Typography variant="body2" sx={{ opacity: 0.8, mb: 2 }}>
+                <Typography variant="body2" sx={{ opacity: 0.8, mb: 2,fontStyle:'italic' }}>
                   {details}
                 </Typography>
               </Collapse>
@@ -184,11 +185,11 @@ export default function ProjectCard({
               {codeLink && (
                 <Button
                   variant="contained"
-                  color="secondary"
-                  startIcon={<CodeIcon />}
+                  
+                  startIcon={<GitHubIcon />}
                   href={codeLink}
                   target="_blank"
-                  sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" }}
+                  sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" , backgroundColor:"#0095c2a8", borderRadius:'9999px',":hover":{backgroundColor:"#003d4ee1", opacity:0.9}}}
                 >
                   Code
                 </Button>
@@ -201,7 +202,7 @@ export default function ProjectCard({
                   startIcon={<LaunchIcon />}
                   href={liveDemoLink}
                   target="_blank"
-                  sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" }}
+                  sx={{ borderRadius: 2, fontWeight: 300, textTransform: "none", backgroundColor:"#00607ab8", borderRadius:'9999px', ":hover":{backgroundColor:"#003d4ee1", opacity:0.9} }}
                 >
                   Live Demo
                 </Button>
@@ -337,7 +338,7 @@ export default function ProjectCard({
             <Button
               variant="contained"
               color="secondary"
-              startIcon={<CodeIcon />}
+              startIcon={<GitHubIcon />}
               href={codeLink}
               target="_blank"
               sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" }}
