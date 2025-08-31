@@ -31,16 +31,18 @@ function VideoPlayer({ videoId, mode }) {
           filter: "blur(60px)",
           opacity: 0.7,
           zIndex: 0,
+          borderRadius:2,
           transition: "background 0.5s ease",
         }}
       />
       <iframe
         ref={videoRef}
         width="100%"
-        height="380rem"
+        height="420rem"
         src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
         title="YouTube video player"
         frameBorder="0"
+        borderRadius="10px"
         allowFullScreen
         style={{ position: "relative", zIndex: 1 }}
       />

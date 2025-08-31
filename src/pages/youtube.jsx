@@ -19,10 +19,13 @@ import {
   channelStyles,
   dateStyles,
 } from "../styles/youtube/style.js";
+import LightRays from "../components/LightRays/LightRays.jsx";
+import {Helmet} from "react-helmet";
 
 const PLAYLIST_ID = "UUhUYAjYRl9dTtna5ZET3E5Q";
 
 function Youtube() {
+  
   const { data: videos, isLoading, search } = useYoutubePlaylist(PLAYLIST_ID);
   const [selectedVideoId, setSelectedVideoId] = useState(null);
 console.log("data from youtube", videos);
@@ -47,7 +50,7 @@ console.log("data from youtube", videos);
 
   return (
     <Box sx={containerStyles(colors)}>
-      <YoutubeHeader mode={mode} onSearch={search} />
+ 
  
       <Grid container spacing={4} sx={{ py: 2, px: 4 }}>
         <Grid size={{xs:12, md:8}} >
@@ -95,8 +98,13 @@ console.log("data from youtube", videos);
                   </Box>
                 </Box>
 
+
+<Helmet>
+    <script src="https://apis.google.com/js/platform.js"></script>  </Helmet>
+
+
                 {/* Right Side - Subscribe */}
-                <Button
+                {/* <Button
                   variant="contained"
                   sx={{
                     bgcolor: "#b1b1b1ff",
@@ -112,7 +120,8 @@ console.log("data from youtube", videos);
                   }}
                 >
                   Subscribe
-                </Button>
+                </Button> */}
+                <div class="g-ytsubscribe" data-channelid="UChUYAjYRl9dTtna5ZET3E5Q" data-layout="full" data-count="default"></div>
               </Box>
             </>
           )}

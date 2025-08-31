@@ -9,7 +9,7 @@ export const palette = {
     hover: "#2c2c2c"
   },
   light: {
-    background: "#fafafa",
+    background: "#fff3bfff",
     title: "#212121",
     channel: "#555",
     date: "#999",
@@ -20,7 +20,7 @@ export const palette = {
 
 export const containerStyles = (colors) => ({
   bgcolor: colors.background,
-  minHeight: "100%",
+  minHeight: "92vh",
   transition: "background-color 0.3s ease",
     
  

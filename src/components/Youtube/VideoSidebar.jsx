@@ -21,7 +21,7 @@ function VideoSidebar({ videos, onSelect, selectedId, mode = "dark" }) {
       date: "#ccc",
     },
     light: {
-      bgList: "#fff",
+      bgList: "#ffeeb8ff",
       color: "#212121",
       bgSelected: "#e3e3e3",
       thumbnailBorder: "#e0e0e0",
@@ -39,8 +39,10 @@ function VideoSidebar({ videos, onSelect, selectedId, mode = "dark" }) {
         color: colors.color,
         borderRadius: 2,
         overflowY: 'auto',
-        maxHeight: 'calc(100vh - 150px)',
+        maxHeight: 'calc(100vh - 120px)',
         boxShadow: mode === 'dark' ? "0 1px 6px #0004" : "0 1px 6px #8882",
+        scrollbarWidth: 'thin',
+        scrollbarColor: mode === 'dark' ? '#555 #222' : '#ccc #f1f1f1',
       }}
     >
       {videos.map((vid) => {
