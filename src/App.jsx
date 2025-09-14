@@ -81,7 +81,7 @@ const App = () => {
               path="/contact"
               element={<ContactUs darkMode={darkMode} />}
             />
-            <Route path="/youtube" element={<Youtube />} />
+            <Route path="/youtube" element={<Youtube darkmode={darkMode} />} />
           </Routes>
         </Suspense>
       </Box>

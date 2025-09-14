@@ -24,13 +24,13 @@ import {Helmet} from "react-helmet";
 
 const PLAYLIST_ID = "UUhUYAjYRl9dTtna5ZET3E5Q";
 
-function Youtube() {
+function Youtube({darkmode}) {
   
   const { data: videos, isLoading, search } = useYoutubePlaylist(PLAYLIST_ID);
   const [selectedVideoId, setSelectedVideoId] = useState(null);
 console.log("data from youtube", videos);
-  const mode = sessionStorage.getItem("darkMode") === "true" ? "dark" : "light";
-  const colors = palette[mode];
+   
+  const colors = palette[darkmode? "dark" : "light" ];
 
   useEffect(() => {
     if (!selectedVideoId && videos && videos.length) {
@@ -57,7 +57,7 @@ console.log("data from youtube", videos);
           {selectedVideoId && (
             <>
               {/* Player */}
-              <VideoPlayer videoId={selectedVideoId} mode={mode} />
+              <VideoPlayer videoId={selectedVideoId} darkmode={darkmode} />
 
               {/* Video Title */}
               <Typography
@@ -130,7 +130,7 @@ console.log("data from youtube", videos);
         {/* Sidebar */}
         <Grid size={{xs:12, md:4}}  >
           <VideoSidebar
-            mode={mode}
+            darkmode={darkmode}
             videos={videos}
             onSelect={setSelectedVideoId}
             selectedId={selectedVideoId}

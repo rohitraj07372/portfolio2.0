@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Box } from "@mui/material";
 
-function VideoPlayer({ videoId, mode }) {
+function VideoPlayer({ videoId, darkmode }) {
   const videoRef = useRef();
 
   useEffect(() => {

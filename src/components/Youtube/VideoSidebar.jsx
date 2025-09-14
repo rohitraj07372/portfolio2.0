@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 
 // Accept mode prop ('light' or 'dark')
-function VideoSidebar({ videos, onSelect, selectedId, mode = "dark" }) {
+function VideoSidebar({ videos, onSelect, selectedId,  darkmode }) {
   // Palette for both modes
   const palette = {
     dark: {
@@ -29,7 +29,7 @@ function VideoSidebar({ videos, onSelect, selectedId, mode = "dark" }) {
     },
   };
 
-  const colors = palette[mode];
+  const colors = palette[darkmode? "dark" : "light" ];
 
   return (
     <List
@@ -40,9 +40,9 @@ function VideoSidebar({ videos, onSelect, selectedId, mode = "dark" }) {
         borderRadius: 2,
         overflowY: 'auto',
         maxHeight: 'calc(100vh - 120px)',
-        boxShadow: mode === 'dark' ? "0 1px 6px #0004" : "0 1px 6px #8882",
+        boxShadow: darkmode ? "0 1px 6px #0004" : "0 1px 6px #8882",
         scrollbarWidth: 'thin',
-        scrollbarColor: mode === 'dark' ? '#555 #222' : '#ccc #f1f1f1',
+        scrollbarColor: darkmode? '#555 #222' : '#ccc #f1f1f1',
       }}
     >
       {videos.map((vid) => {
@@ -57,7 +57,7 @@ function VideoSidebar({ videos, onSelect, selectedId, mode = "dark" }) {
               bgcolor: videoId === selectedId ? colors.bgSelected : undefined,
               '&:hover': {
                 bgcolor:
-                  mode === "dark" ?
+                  darkmode ?
                     (videoId === selectedId ? "#232323" : "#222") :
                     (videoId === selectedId ? "#e3e3e3" : "#f6f6f6"),
               },
@@ -73,7 +73,7 @@ function VideoSidebar({ videos, onSelect, selectedId, mode = "dark" }) {
                   height: 60,
                   mr: 2,
                   border: `1px solid ${colors.thumbnailBorder}`,
-                  bgcolor: mode === "dark" ? "#232323" : "#fafafa",
+                  bgcolor: darkmode ? "#232323" : "#fafafa",
                 }}
               />
             </ListItemAvatar>
