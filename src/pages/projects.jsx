@@ -1,7 +1,7 @@
 import { Box, Grid } from '@mui/material'
 import React from 'react'
 import ProjectCard from '../components/project/ProjectCard'
-import calculator from '../assets/projectImage/calculator.png'
+import calculator from '../assets/projectImage/calculator.PNG'
 import passwordgen from '../assets/projectImage/password.png'
 import ticTacToe from '../assets/projectImage/tictacj.png'
 import wheatherApp from '../assets/projectImage/weather.png'
