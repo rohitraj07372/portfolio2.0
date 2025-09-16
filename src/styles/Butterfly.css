@@ -1,0 +1,9 @@
+/* Butterfly.css */
+.butterfly {
+    position: fixed;
+   z-index: 80;
+    transform: translate(-40%, -50%);
+    pointer-events: none;
+    transition: all .1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
