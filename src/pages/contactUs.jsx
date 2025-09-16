@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, TextField, Button, Typography, CircularProgress, useMediaQuery, Snackbar, Alert as MuiAlert } from '@mui/material';
 import { getContactPageStyles } from '../styles/contactPage/contactPageStyle';
 import { useSendContactEmail } from '../services/contactUs/contactUsServices';
-import Particles from '../components/particleBackground/Particle';
+ 
 import { colorPalette } from '../styles/colorPallet/colors';
 import Lottie from 'lottie-react';
 import LightRays from '../components/LightRays/LightRays';

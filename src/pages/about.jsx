@@ -3,7 +3,7 @@ import React from "react";
 import { Box, Grid } from "@mui/material";
 import IdCard from "../components/about/IdCard";
 import CommandPrompt from "../components/about/CommandPrompt";
-import Particles from "../components/particleBackground/Particle";
+ 
 import LightRays from "../components/LightRays/LightRays";
 import { getAboutStyles } from "../styles/aboutPage/aboutPageStyle";
 import IdCardInstagram from "../components/about/IdCard";
