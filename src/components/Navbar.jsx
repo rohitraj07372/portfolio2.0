@@ -19,7 +19,7 @@ import Brightness7 from '@mui/icons-material/Brightness7';
 import { NavLink } from 'react-router-dom';
 import { colorPalette } from '../styles/colorPallet/colors';
 import { getNavbarStyles } from '../styles/navbarStyles';
-import profile3 from '../assets/profile_3.jpg';
+import profile3 from '../assets/Profile_3.jpg';
 
 const Navbar = ({ menuItems, socialLinks, darkMode, toggleTheme }) => {
   // const [darkMode, setDarkMode] = useState(false);
