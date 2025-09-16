@@ -7,7 +7,9 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 // import SplashCursor from "./components/SplashCursor/SplashCursor";
 import Butterfly from "./components/Butterfly/Butterfly";
-import LoadingScreen from "./components/fallback/FallbackScreen";
+// import LoadingScreen from "./components/fallback/FallbackScreen";
+import LoadingScreen from '@components/fallback/FallbackScreen'
+
 const Home = lazy(() => import("./pages/home"));
 const About = lazy(() => import("./pages/about"));
 const ContactUs = lazy(() => import("./pages/contactUs"));
