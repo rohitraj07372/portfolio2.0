@@ -189,7 +189,7 @@ export default function ProjectCard({
                   startIcon={<GitHubIcon />}
                   href={codeLink}
                   target="_blank"
-                  sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" , backgroundColor:"#0095c2a8", borderRadius:'9999px',":hover":{backgroundColor:"#003d4ee1", opacity:0.9}}}
+                  sx={{  fontWeight: 600, textTransform: "none" , backgroundColor:"#0095c2a8", borderRadius:'9999px',":hover":{backgroundColor:"#003d4ee1", opacity:0.9}}}
                 >
                   Code
                 </Button>

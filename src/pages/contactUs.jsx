@@ -7,7 +7,7 @@ import { colorPalette } from '../styles/colorPallet/colors';
 import Lottie from 'lottie-react';
 import LightRays from '../components/LightRays/LightRays';
 import contactUs from '../assets/contact/contactUs.json';  
-import  astronaut from "../assetps/contact/astronaut.json";
+import  astronaut from "../assets/contact/astronaut.json";
 
 const ContactPage = ({ darkMode }) => {
   const styles = getContactPageStyles(darkMode);
