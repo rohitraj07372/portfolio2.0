@@ -17,7 +17,7 @@ import {
 import LaunchIcon from "@mui/icons-material/Launch";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ElectricBorder from "../electricBorder/ElectricBorder";
+import ElectricBorder from "../../components/ElectricBorder/ElectricBorder"
 const techColors = {
   React: "primary",
   TypeScript: "info",
@@ -202,7 +202,7 @@ export default function ProjectCard({
                   startIcon={<LaunchIcon />}
                   href={liveDemoLink}
                   target="_blank"
-                  sx={{ borderRadius: 2, fontWeight: 300, textTransform: "none", backgroundColor:"#00607ab8", borderRadius:'9999px', ":hover":{backgroundColor:"#003d4ee1", opacity:0.9} }}
+                  sx={{  fontWeight: 300, textTransform: "none", backgroundColor:"#00607ab8", borderRadius:'9999px', ":hover":{backgroundColor:"#003d4ee1", opacity:0.9} }}
                 >
                   Live Demo
                 </Button>
