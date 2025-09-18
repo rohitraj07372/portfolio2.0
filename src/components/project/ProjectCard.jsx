@@ -17,7 +17,7 @@ import {
 import LaunchIcon from "@mui/icons-material/Launch";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ElectricBorder from "../../components/ElectricBorder/ElectricBorder"
+// import ElectricBorder from "../../components/ElectricBorder/ElectricBorder"
 const techColors = {
   React: "primary",
   TypeScript: "info",
@@ -51,13 +51,7 @@ export default function ProjectCard({
   };
 
   return (
-      darkMode? ( <ElectricBorder
-      color="#7df9ff"
-      speed={1}
-      chaos={0.5}
-      thickness={2}
-      style={{ borderRadius: 16 }}
-    >
+      darkMode? ( 
         <Card sx={cardStyles}>
           {/* Image with Overlay */}
           <Box
@@ -210,7 +204,7 @@ export default function ProjectCard({
             </Stack>
           </Box>
         </Card>
-        </ElectricBorder>):( <Card sx={cardStyles}>
+        ):( <Card sx={cardStyles}>
       {/* Image with Overlay */}
       <Box
         sx={{
