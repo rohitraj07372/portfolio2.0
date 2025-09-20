@@ -61,7 +61,7 @@ const App = () => {
             { label: "Home", path: "/" },
             { label: "About", path: "/about" },
             { label: "Projects", path: "/projects" },
-            { label: "Experience", path: "/experience" },
+            // { label: "Experience", path: "/experience" },
             { label: "Youtube", path: "/youtube" },
             { label: "Contact", path: "/contact" },
           ]}
