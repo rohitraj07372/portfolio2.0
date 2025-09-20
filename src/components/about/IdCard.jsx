@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  Box, Typography, Avatar, IconButton, Paper,
+  Box, Typography, Avatar, IconButton, Paper,useMediaQuery
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -57,7 +57,7 @@ const InstagramPostCard = ({darkMode}) => {
       setLikes(likes - 1);
     }
   };
-
+ const isMobile = useMediaQuery("(max-width:768px)");
   // Remove animation state after animation finishes (~700ms)
   useEffect(() => {
     if (animating) {
@@ -208,7 +208,7 @@ const InstagramPostCard = ({darkMode}) => {
               {user.username}
             </Typography>
             <Typography component="span" sx={{ fontSize: "0.96rem", ml: 0.7, color: darkMode?"#e2e2e2ff": "#2e2e2eff"}}>
-              {" "}Software Engineer  
+             Software Engineer  
             </Typography>
             <Box sx={{ mt: 0.5, wordBreak: "break-word" }}>
               <Typography
@@ -218,7 +218,9 @@ const InstagramPostCard = ({darkMode}) => {
                 {user.phone} | {user.email}
               </Typography>
             </Box>
-            <Box sx={{ mt: 0.3 }}>
+            <Box sx={{ mt: 0.3, display 
+: isMobile &&   "flex", flexWrap: isMobile && "wrap", width: "100%"
+             }}>
               {hashtags.map((tag) => (
                 <Typography
                   key={tag}

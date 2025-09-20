@@ -1,9 +1,9 @@
 // About.js
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, useMediaQuery } from "@mui/material";
 import IdCard from "../components/about/IdCard";
 import CommandPrompt from "../components/about/CommandPrompt";
- 
+
 import LightRays from "../components/LightRays/LightRays";
 import { getAboutStyles } from "../styles/aboutPage/aboutPageStyle";
 import IdCardInstagram from "../components/about/IdCard";
@@ -12,9 +12,9 @@ import InstagramPostCard from "../components/about/IdCard";
 export default function About({ darkMode }) {
   const styles = getAboutStyles(darkMode);
   console.log("DARK MODE IS", darkMode);
-
+ const isMobile = useMediaQuery("(max-width:768px)");
   return (
-    <Box sx={{ ...styles.root }}>
+    <Box sx={{ ...styles.root, marginTop:isMobile? 2 : 0 }}>
       {darkMode && (
         <Box
           sx={{
@@ -46,6 +46,7 @@ export default function About({ darkMode }) {
           alignItems: "center",
           height: "100%",
           width: "100%",
+          gap: isMobile ? 4 : 8,
           
           padding: { xs: 2, md: 4 },
           

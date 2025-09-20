@@ -9,11 +9,7 @@ export const getAboutStyles = (darkMode) => ({
     height:'calc(100vh - 63px)',
 
     px: 4,
-    background: darkMode
-      ? `radial-gradient(ellipse 60% 30% at 70% 15%, rgba(0, 30, 60, 0.25) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 20% at 20% 70%, rgba(0, 100, 140, 0.12) 0%, transparent 80%),
-    linear-gradient(135deg, #000814 0%, #001d3d 60%, #000b1a 100%)`
-      : "#fff8a6",
+     
     overflow: {xs: "visible", md: "hidden"},
     transition: "background 0.4s, color 0.4s",
   },

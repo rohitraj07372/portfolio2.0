@@ -64,11 +64,11 @@ const Home = ({ darkMode }) => {
         sx={{
           ...styles.section,
           flexDirection: isMobile ? "column-reverse" : "row",
-          gap: 8,
+          gap: isMobile ? 4 : 8,
         }}
       >
         {/* Left Text */}
-        <Box sx={styles.textContainer}>
+        <Box sx={{...styles.textContainer, marginTop: isMobile ? 10 : 0  }}>
           <Typography variant="h5" sx={{ color: darkMode ? "#ccc" : "#555" }}>
             Hi there! I'm
           </Typography>
@@ -108,10 +108,12 @@ const Home = ({ darkMode }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            
+           
           }}
         >
           {/* Chakra (Back Layer) */}
-          <Box component="img" src={chakra} alt="chakra" sx={styles.chakra} />
+          <Box component="img" src={chakra} alt="chakra" sx={{...styles.chakra }} />
 
           {/* Tech Logos Diagonal Cross Orbit */}
           <Box sx={styles.techOrbit}>
