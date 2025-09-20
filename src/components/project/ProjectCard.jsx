@@ -318,11 +318,11 @@ export default function ProjectCard({
         <Stack direction="row" spacing={2} justifyContent="flex-start" alignItems="center">
           {details && (
             <Button
-              variant="outlined"
+              variant="contained"
               color="primary"
               startIcon={<ExpandMoreIcon />}
               onClick={() => setShowDetails((prev) => !prev)}
-              sx={{ textTransform: "none", borderRadius: 16, fontWeight: 600 }}
+              sx={{ borderRadius: 16, fontWeight: 300 }}
             >
               {showDetails ? "Hide Details" : "View Details"}
             </Button>
@@ -335,9 +335,9 @@ export default function ProjectCard({
               startIcon={<GitHubIcon />}
               href={codeLink}
               target="_blank"
-              sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" }}
+              sx={{ borderRadius: 2, fontWeight: 300,  }}
             >
-              Code
+              Code 
             </Button>
           )}
 
@@ -348,7 +348,7 @@ export default function ProjectCard({
               startIcon={<LaunchIcon />}
               href={liveDemoLink}
               target="_blank"
-              sx={{ borderRadius: 2, fontWeight: 600, textTransform: "none" }}
+              sx={{ borderRadius: 2, fontWeight: 300, textTransform: "none" }}
             >
               Live Demo
             </Button>

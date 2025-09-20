@@ -38,7 +38,12 @@ const App = () => {
  
   const location = useLocation();
 
-   
+   const socialLinks = {
+     linkedin: import.meta.env.VITE_LINKEDIN,
+     github: import.meta.env.VITE_GITHUB,
+     youtube: import.meta.env.VITE_YOUTUBE,
+
+    };
   const rootOverflow =
     location.pathname === "/projects" ? "auto" : { xs: "auto", md: "hidden" };
 
@@ -51,6 +56,7 @@ const App = () => {
         <Navbar
           darkMode={darkMode}
           toggleTheme={toggleTheme}
+          socialLinks={socialLinks}
           menuItems={[
             { label: "Home", path: "/" },
             { label: "About", path: "/about" },

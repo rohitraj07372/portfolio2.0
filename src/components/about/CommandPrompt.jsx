@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Box, Typography, TextField, IconButton } from "@mui/material";
+import { Box, Typography, TextField, IconButton, Link } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
+import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 
 const githubLink = import.meta.env.VITE_GITHUB 
 const linkedinLink = import.meta.env.VITE_LINKEDIN;
+
 const commands = {
   help: `Available commands:
   - about: Info about me
@@ -15,110 +16,133 @@ const commands = {
   - email: Contact me
   - projects: View key MERN projects on GitHub
   - clear: Clear the terminal`,
- about: (
-  <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-        alt="User"
-        width={32}
-        height={32}
-        style={{ borderRadius: 8, background: "#fff" }}
-      />
+  about: (
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+          alt="User"
+          width={32}
+          height={32}
+          style={{ borderRadius: 8, background: "#fff" }}
+        />
+        <Typography
+          component="span"
+          sx={{
+            fontWeight: "bold",
+            color: "#00FFD0",
+            fontSize: "0.875rem",
+          }}
+        >
+          Rohit Kumar · Software Engineer
+        </Typography>
+      </Box>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1, ml: 3 }}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/684/684908.png"
+          alt="Graduation cap"
+          width={20}
+          height={20}
+        />
+        <Typography component="span" sx={{ color: "#FFD700", fontSize: "0.875rem" }}>
+          B.Tech in Computer Science, Chandigarh University
+        </Typography>
+      </Box>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1, ml: 3 }}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/684/684908.png"
+          alt="Map Marker"
+          width={20}
+          height={20}
+        />
+        <Typography component="span" sx={{ color: "#00BFFF", fontSize: "0.875rem" }}>
+          <span role="img" aria-label="Location">📍</span> Bihar, Muzaffarpur
+        </Typography>
+      </Box>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1, ml: 3 }}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1821/1821054.png"
+          alt="Code"
+          width={24}
+          height={24}
+        />
+        <Typography
+          component="span"
+          sx={{ color: "#FFD700", fontSize: "0.875rem" }}
+        >
+          I craft <span style={{ color: "#00FF00", fontWeight: "bold" }}>immersive full-stack experiences</span> with React, Node.js, and MongoDB.
+        </Typography>
+      </Box>
+      <Box sx={{ display: "flex", alignItems: "start", gap: 1, mt: 1, ml: 3 }}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/2721/2721090.png"
+          alt="Hobbies"
+          width={20}
+          height={20}
+        />
+        <Box>
+          <Typography component="span" sx={{ color: "#00BFFF", fontWeight: "bold", fontSize: "0.875rem" }}>
+            Hobbies:
+          </Typography>
+          <ul style={{ color: "#FFD700", margin: "2px 0 0 18px", fontSize: "0.85rem", padding: 0 }}>
+            <li>
+              🎨 <span style={{ color: "#00FFB2" }}>Graphic Designing</span> — turning ideas into vibrant visual stories.
+            </li>
+            <li>
+              🚀 <span style={{ color: "#1EC9FF" }}>Exploring New Tech</span> — always searching for the next "aha" moment.
+            </li>
+            <li>
+              🗺️ <span style={{ color: "#FFD700" }}>Mapping Pixels</span> — bringing concepts to life, one creative map at a time.
+            </li>
+          </ul>
+        </Box>
+      </Box>
       <Typography
-        component="span"
+        component="p"
         sx={{
-          fontWeight: "bold",
-          color: "#00FFD0",
-          fontSize: "0.875rem",
+          mt: 2,
+          fontSize: "0.85rem",
+          color: "#FFF",
+          background: "rgba(0,255,0,0.07)",
+          p: 1,
+          borderRadius: 1,
         }}
       >
-        Rohit Kumar · Software Engineer
+        If you’re looking for someone who combines <span style={{ color: "#FFD700", fontWeight: "bold" }}>technical mastery</span> with a passion for design and continuous
+        exploration, <span style={{ color: "#00FF00" }}>let’s connect!</span>
       </Typography>
     </Box>
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1, ml: 3 }}>
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/684/684908.png"
-        alt="Graduation cap"
-        width={20}
-        height={20}
-      />
-      <Typography component="span" sx={{ color: "#FFD700", fontSize: "0.875rem" }}>
-        B.Tech in Computer Science, Chandigarh University
-      </Typography>
-    </Box>
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1, ml: 3 }}>
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/684/684908.png"
-        alt="Map Marker"
-        width={20}
-        height={20}
-      />
-      <Typography component="span" sx={{ color: "#00BFFF", fontSize: "0.875rem" }}>
-        <span role="img" aria-label="Location">📍</span> Bihar, Muzaffarpur
-      </Typography>
-    </Box>
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1, ml: 3 }}>
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/1821/1821054.png"
-        alt="Code"
-        width={24}
-        height={24}
-      />
-      <Typography
-        component="span"
-        sx={{ color: "#FFD700", fontSize: "0.875rem" }}
-      >
-        I craft <span style={{ color: "#00FF00", fontWeight: "bold" }}>immersive full-stack experiences</span> with React, Node.js, and MongoDB.
-      </Typography>
-    </Box>
-    <Box sx={{ display: "flex", alignItems: "start", gap: 1, mt: 1, ml: 3 }}>
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/2721/2721090.png"
-        alt="Hobbies"
-        width={20}
-        height={20}
-      />
-      <Box>
-        <Typography component="span" sx={{ color: "#00BFFF", fontWeight: "bold", fontSize: "0.875rem" }}>
-          Hobbies:
-        </Typography>
-        <ul style={{ color: "#FFD700", margin: "2px 0 0 18px", fontSize: "0.85rem", padding: 0 }}>
-          <li>
-            🎨 <span style={{ color: "#00FFB2" }}>Graphic Designing</span> — turning ideas into vibrant visual stories.
-          </li>
-          <li>
-            🚀 <span style={{ color: "#1EC9FF" }}>Exploring New Tech</span> — always searching for the next "aha" moment.
-          </li>
-          <li>
-            🗺️ <span style={{ color: "#FFD700" }}>Mapping Pixels</span> — bringing concepts to life, one creative map at a time.
-          </li>
-        </ul>
-      </Box>
-    </Box>
-    <Typography
-      component="p"
-      sx={{
-        mt: 2,
-        fontSize: "0.85rem",
-        color: "#FFF",
-        background: "rgba(0,255,0,0.07)",
-        p: 1,
-        borderRadius: 1,
-      }}
-    >
-      If you’re looking for someone who combines <span style={{ color: "#FFD700", fontWeight: "bold" }}>technical mastery</span> with a passion for design and continuous
-      exploration, <span style={{ color: "#00FF00" }}>let’s connect!</span>
-    </Typography>
-  </Box>
-),
-
-  projects: `- ProjectA: https://github.com/yourprofile/projectA
-- ProjectB: https://github.com/yourprofile/projectB`,
+  ),
+  projects: [
+    {
+      title: "Calculator",
+      url: "https://rohitraj07372.github.io/Js_projects/Classic_Calculator/"
+    },
+    {
+      title: "Password Generator",
+      url: "https://rohitraj07372.github.io/Js_projects/Password%20Generator/"
+    },
+    {
+      title: "Dev Detective",
+      url: "https://rohitraj07372.github.io/Js_projects/dev_detective/"
+    },
+    {
+      title: "Weather App",
+      url: "https://rohitraj07372.github.io/Js_projects/Weather_app/"
+    },
+    {
+      title: "Tic Tac Toe",
+      url: "https://rohitraj07372.github.io/Js_projects/TicTacToe/"
+    },
+    {
+      title: "Math Magic",
+      url: "https://rohitraj07372.github.io/Js_projects/mathMagic/"
+    }
+  ],
   github: (
     <span>
       <IconButton
-        href= {githubLink}
+        href={githubLink}
         target="_blank"
         rel="noopener noreferrer"
         size="small"
@@ -136,9 +160,9 @@ const commands = {
     </span>
   ),
   linkedin: (
-   <span>
+    <span>
       <IconButton
-        href= {linkedinLink}
+        href={linkedinLink}
         target="_blank"
         rel="noopener noreferrer"
         size="small"
@@ -157,7 +181,7 @@ const commands = {
   ),
   email: (
     <span>
-      <IconButton href="mailto:youremail@example.com" size="small" sx={{ p: 0, verticalAlign: "middle" }}>
+      <IconButton href="mailto:rohit.kumar053803@gmail.com" size="small" sx={{ p: 0, verticalAlign: "middle" }}>
         <EmailIcon sx={{ color: "#FFD700", fontSize: 20 }} />
       </IconButton>
       <Typography
@@ -171,20 +195,6 @@ const commands = {
   ),
 };
 
-// A utility component to colorize output text based on type
-const ColoredText = ({ text, color = "white" }) => (
-  <Typography
-    sx={{
-      fontSize: "0.775rem",
-      whiteSpace: "pre-wrap",
-      fontFamily: "monospace",
-      userSelect: "text",
-      color,
-    }}
-  >
-    {text}
-  </Typography>
-);
 
 const AnimatedText = ({ text, color = "white" }) => {
   const [displayed, setDisplayed] = useState("");
@@ -196,7 +206,6 @@ const AnimatedText = ({ text, color = "white" }) => {
       idx++;
       if (idx === text.length) clearInterval(interval);
     }, 10);
-
     return () => clearInterval(interval);
   }, [text]);
 
@@ -208,6 +217,7 @@ const AnimatedText = ({ text, color = "white" }) => {
     </Typography>
   );
 };
+
 
 const Terminal = ({ darkMode }) => {
   const [history, setHistory] = useState([]);
@@ -228,22 +238,21 @@ const Terminal = ({ darkMode }) => {
 
     if (!output) {
       output = "Unknown command. Type 'help' for a list of available commands.";
-      color = "#FF5555"; // red for errors
+      color = "#FF5555";
     } else {
-      // Define colors based on command type
       switch (key) {
         case "help":
-          color = "#FFD700"; // yellow
+          color = "#FFD700";
           break;
         case "linkedin":
-          color = "#1E90FF"; // blue
+          color = "#1E90FF";
           break;
         case "github":
         case "projects":
-          color = "#00FF00"; // green
+          color = "#00FF00";
           break;
         case "email":
-          color = "#FFD700"; // yellowish
+          color = "#FFD700";
           break;
         default:
           color = "white";
@@ -265,7 +274,6 @@ const Terminal = ({ darkMode }) => {
     inputRef.current?.focus();
   }, [history]);
 
-  // Auto-scroll to bottom when history updates
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -277,15 +285,14 @@ const Terminal = ({ darkMode }) => {
       sx={{
         bgcolor: darkMode
           ? "rgba(20, 20, 20, 0.4)"  
-          : "rgba(21, 21, 21, 1)", // Light glass bg fallback (if needed)
+          : "rgba(21, 21, 21, 1)",
         backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)", // Safari support
+        WebkitBackdropFilter: "blur(8px)",
         borderRadius: 3,
         border: darkMode
           ? "1px solid rgba(0, 255, 0, 0.2)"
           : "1px solid rgba(0, 0, 0, 1)",
-        
-        color: "#00FF00", // default green text for terminal vibe
+        color: "#00FF00",
         fontFamily: "monospace",
         boxSizing: "border-box",
         padding: "1rem",
@@ -293,10 +300,9 @@ const Terminal = ({ darkMode }) => {
         flexDirection: "column",
         fontSize: "0.775rem",
         height: "100%", 
-        
       }}
     >
-      <Typography sx={{ mb: 1, userSelect: "none", fontsize:"775rem",  color: "#FFD700" /* golden for instructions */ }}>
+      <Typography sx={{ mb: 1, userSelect: "none", color: "#FFD700" }}>
         Type 'help' to know more
       </Typography>
 
@@ -308,11 +314,9 @@ const Terminal = ({ darkMode }) => {
           mb: 1,
           borderRadius: 1,
           p: 2,
-          // backgroundColor: darkMode ? "rgba(0, 0, 0, 0.25)" : "rgba(39, 39, 39, 1)",
-          // border: "1px solid rgba(0, 255, 0, 0.3)",
           whiteSpace: "pre-wrap",
           userSelect: "text",
-          fontSize:' 0.775rem',
+          fontSize:'0.775rem',
         }}
       >
         {history.length === 0 && (
@@ -326,10 +330,47 @@ const Terminal = ({ darkMode }) => {
               user@rohit&gt; {item.cmd}
             </Typography>
             <Box sx={{ ml: 2 }}>
-              {typeof item.output === "string" ? (
+              {/* Special rendering for projects */}
+              {Array.isArray(item.output) ? (
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                  {item.output.map((proj, i) => (
+                    <Link
+                      key={proj.url}
+                      href={proj.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      underline="none"
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1.3,
+                        color: "#00FFB2",
+                        fontSize: "0.95rem",
+                        fontFamily: "monospace",
+                        px: 1,
+                        py: 0.6,
+                        borderRadius: 2,
+                        transition: 'background .2s, color .2s',
+                        "&:hover": {
+                          background: "rgba(0,255,178,0.08)",
+                          color: "#fff",
+                          textDecoration: 'underline'
+                        }
+                      }}
+                    >
+                      <FolderOpenIcon sx={{ fontSize: 18, color: "#00FFD0" }} />
+                      <span style={{ fontWeight: 600 }}>
+                        {proj.title}
+                      </span>
+                      <span style={{ fontSize: "0.73rem", opacity: 0.7 }}>
+                        ({proj.url.replace(/^https?:\/\//, "")})
+                      </span>
+                    </Link>
+                  ))}
+                </Box>
+              ) : typeof item.output === "string" ? (
                 <AnimatedText text={item.output} color={item.color || "white"} />
               ) : (
-                 
                 <Box sx={{ color: item.color || "#00FF00" }}>{item.output}</Box>
               )}
             </Box>
@@ -343,11 +384,10 @@ const Terminal = ({ darkMode }) => {
           alignItems: "center",
           pt: 1,
           borderTop: "1px solid rgba(0, 255, 0, 0.3)",
-         
         }}
       >
-        <Typography sx={{ color: "#00FF00", fontsixe: "0.775rem", fontFamily: "monospace" }}>
-        user@rohit&gt;
+        <Typography sx={{ color: "#00FF00", fontSize: "0.775rem", fontFamily: "monospace" }}>
+          user@rohit&gt;
         </Typography>
         <TextField
           variant="standard"
@@ -364,18 +404,8 @@ const Terminal = ({ darkMode }) => {
               flex: 1,
             },
             inputRef: inputRef,
-            endAdornment: (
-              <Typography
-                sx={{
-                  color: "#00FF00",
-                  ml: 0.5,
-                  userSelect: "none",
-                }}
-              >
-               
-              </Typography>
-            ),
-            autoComplete: "off",
+            endAdornment: (showCursor ? <span style={{color:"#00ff00", fontWeight:700}}>|</span> : ""),
+            autoComplete: "off"
           }}
           spellCheck={false}
           autoFocus

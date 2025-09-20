@@ -4,6 +4,7 @@ import ProjectCard from '../components/project/ProjectCard'
 import calculator from '../assets/projectImage/calculator.PNG'
 import passwordgen from '../assets/projectImage/password.PNG'
 import ticTacToe from '../assets/projectImage/tictacj.PNG'
+import mathMagic from '../assets/projectImage/maths.PNG'
 import wheatherApp from '../assets/projectImage/weather.PNG'
 import dev from '../assets/projectImage/dev.PNG'
 import magic from '../assets/projectImage/maths.PNG'
@@ -117,7 +118,7 @@ const projects = ({darkMode}) => {
                  <ProjectCard
   title="MAGIC MATHS"
  
-  image={ticTacToe}
+  image={mathMagic}
   tags={['HTML', 'CSS', 'JAVASCRIPT','TAILWIND CSS']}
   details="Experience the enchantment of Math Magic, a captivating web project that combines mathematics and mind-reading for an interactive and intriguing experience. Follow the on-screen instructions, and witness the app attempt to predict your thoughts through a series of mathematical operations."
   codeLink="https://github.com/rohitraj07372/Js_projects/tree/master/mathMagic"

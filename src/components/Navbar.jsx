@@ -20,7 +20,8 @@ import { NavLink } from 'react-router-dom';
 import { colorPalette } from '../styles/colorPallet/colors';
 import { getNavbarStyles } from '../styles/navbarStyles';
 import profile3 from '../assets/Profile_3.jpg';
-
+import Lottie from 'lottie-react';
+import boat from '../assets/boat.json';
 const Navbar = ({ menuItems, socialLinks, darkMode, toggleTheme }) => {
   // const [darkMode, setDarkMode] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -37,12 +38,31 @@ const Navbar = ({ menuItems, socialLinks, darkMode, toggleTheme }) => {
       {/* Top Navbar */}
       <Box sx={{ ...styles.navBar }}>
         {/* Brand (Profile + Name) */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, backgroundColor:styles.activeItem, px:1, py: 0.5, borderRadius: '999px' }}>
-          <Box sx={{ borderRadius: '50%', overflow: 'hidden', width: 35, height: 35 }}>
-            <img src={profile3} alt="logo" style={styles.profileImg} />
-          </Box>
-          <Typography sx={styles.brandText}>Rohit Kumar</Typography>
-        </Box>
+   <Box
+  sx={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: 1.2,
+    backgroundColor: styles.activeItem,
+    px: 2,
+    py: 0.5,
+    borderRadius: '999px',
+    position: 'relative',
+    overflow: 'hidden',          // Clipping effect for a truly pill-like look if the Lottie is wider
+    minHeight: 40                // Ensures enough height for the Lottie
+  }}
+>
+  <Box sx={{ width: 40, height: 40, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <Lottie
+      animationData={boat}
+      loop={true}
+      style={{ width: 40, height: 40 }}
+    />
+  </Box>
+  <Typography sx={{ ...styles.brandText, ml: 0.5 }}>
+    Rohit Kumar
+  </Typography>
+</Box>
 
         {/* Desktop Nav */}
         {!isMobile && (
