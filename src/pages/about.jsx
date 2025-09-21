@@ -48,7 +48,7 @@ export default function About({ darkMode }) {
           width: "100%",
           gap: isMobile ? 4 : 8,
           
-          padding: { xs: 2, md: 4 },
+          padding: { xs: 0, md: 4 },
           
   
         }}

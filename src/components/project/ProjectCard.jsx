@@ -11,12 +11,15 @@ import {
   Box,
   IconButton,
   Collapse,
+  useMediaQuery,
   
 } from "@mui/material";
   
 import LaunchIcon from "@mui/icons-material/Launch";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
 // import ElectricBorder from "../../components/ElectricBorder/ElectricBorder"
 const techColors = {
   React: "primary",
@@ -38,7 +41,7 @@ export default function ProjectCard({
 }) {
   const theme = useTheme();
   const [showDetails, setShowDetails] = useState(false);
-
+const isMobile = useMediaQuery("(max-width:768px)");
   const cardStyles = {
     background: darkMode ? "#0a90fd0a" : "#b97f0293",
     color: darkMode ? "#0a90fdde"  : theme.palette.grey[900],
@@ -172,7 +175,7 @@ export default function ProjectCard({
                   onClick={() => setShowDetails((prev) => !prev)}
                   sx={{ textTransform: "none", borderRadius: 16, fontWeight: 600 }}
                 >
-                  {showDetails ? "Hide Details" : "View Details"}
+                  {showDetails ? isMobile?<VisibilityOffIcon/> :"Hide Details" : isMobile? <RemoveRedEyeIcon/> :"View Details"}
                 </Button>
               )}
 
@@ -198,7 +201,7 @@ export default function ProjectCard({
                   target="_blank"
                   sx={{  fontWeight: 300, textTransform: "none", backgroundColor:"#00607ab8", borderRadius:'9999px', ":hover":{backgroundColor:"#003d4ee1", opacity:0.9} }}
                 >
-                  Live Demo
+                 { isMobile? <LiveTvIcon/>:" Live Demo"}
                 </Button>
               )}
             </Stack>

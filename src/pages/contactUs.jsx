@@ -11,7 +11,7 @@ import  astronaut from "../assets/contact/astronaut.json";
 
 const ContactPage = ({ darkMode }) => {
   const styles = getContactPageStyles(darkMode);
-  const isMobile = useMediaQuery('(max-width: 900px)');
+  const isMobile = useMediaQuery('(max-width: 756px)');
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   
   // Snackbar states
@@ -103,10 +103,11 @@ const ContactPage = ({ darkMode }) => {
       <Box
         sx={{
           ...styles.formContainer,
-          width: '100%',
+        
           maxWidth: 420,
-          mx: 'auto',
+         
           zIndex: 3,  
+          marginTop: isMobile ? 3 : 0,
         }}
       >
         <Typography variant="h4" fontWeight="bold" gutterBottom sx={{ color: darkMode ? '#fff' : '#333' }}>
@@ -192,7 +193,7 @@ const ContactPage = ({ darkMode }) => {
           
            
             fullWidth
-            disabled={isLoading}
+            disabled={isLoading || !form.name || !form.email || !form.message }
             sx={{ mt: 2, mb: 1, fontWeight: 600, borderRadius: 16, backgroundColor: darkMode ? 'rgba(255,255,255,0.18)' : colorPalette.primary.main, color:darkMode ? 'rgba(150, 148, 148, 0.88)': 'rgba(150, 53, 0, 0.88)',   boxShadow: 'inset 0 2px 2px rgba(0, 0, 0, 0.6)',  }}
             
             transition="background-color 0.3s, box-shadow 0.3s"
@@ -212,12 +213,12 @@ const ContactPage = ({ darkMode }) => {
           </MuiAlert>
         </Snackbar>
       </Box>
-      <Box sx={{ ...styles.imageContainer, position: 'relative', zIndex: 1 }}>
-      {!darkMode ?   <Lottie
+      <Box  sx={{ ...styles.imageContainer, position: 'relative', zIndex: 1 }}>
+      { !darkMode ?  !isMobile && <Lottie
           animationData={contactUs} 
           loop={true}
           style={{ width: '100%', height: '100%' }}
-        /> :   <Lottie
+        /> : !isMobile &&  <Lottie
           animationData={astronaut} 
           loop={true}
           style={{ width: '100%', height: '100%' }}
