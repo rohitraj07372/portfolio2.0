@@ -4,7 +4,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
-
+import profile2 from '../../assets/profile2.jpg';
 const githubLink = import.meta.env.VITE_GITHUB 
 const linkedinLink = import.meta.env.VITE_LINKEDIN;
 
@@ -12,7 +12,7 @@ const commands = {
   help: `Available commands:
   - about: Info about me
   - github: Show my GitHub link
-  - linkedin: Show my LinkedIn link (text only)
+  - linkedin: Show my LinkedIn link  
   - email: Contact me
   - projects: View key MERN projects on GitHub
   - clear: Clear the terminal`,
@@ -20,11 +20,11 @@ const commands = {
     <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
       <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
         <img
-          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-          alt="User"
+          src={profile2}          alt="User"
           width={32}
           height={32}
           style={{ borderRadius: 8, background: "#fff" }}
+          imagesizing="cover"
         />
         <Typography
           component="span"
@@ -283,6 +283,7 @@ const Terminal = ({ darkMode }) => {
   return (
     <Box
       sx={{
+       
         bgcolor: darkMode
           ? "rgba(20, 20, 20, 0.4)"  
           : "rgba(21, 21, 21, 1)",
@@ -307,8 +308,11 @@ const Terminal = ({ darkMode }) => {
       </Typography>
 
       <Box
+      
         ref={scrollRef}
         sx={{
+           scrollbarWidth: 'thin',
+           scrollbarColor: darkMode ? '#00FF00 transparent' : '#888 transparent',
           height: "70%",
           overflowY: "auto",
           mb: 1,
@@ -404,7 +408,7 @@ const Terminal = ({ darkMode }) => {
               flex: 1,
             },
             inputRef: inputRef,
-            endAdornment: (showCursor ? <span style={{color:"#00ff00", fontWeight:700}}>|</span> : ""),
+          
             autoComplete: "off"
           }}
           spellCheck={false}

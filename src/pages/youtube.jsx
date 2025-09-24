@@ -36,7 +36,10 @@ function Youtube({ darkmode }) {
 
   if (isLoading)
     return (
-      <CircularProgress sx={{ mt: 4, mx: "auto", display: "block" }} />
+  <Box sx={{width:"100%" , height:"calc(100vh - 70px)", display:"flex", justifyContent:'center', alignItems:'center' }}   >
+   <CircularProgress sx={{ mt: 4, mx: "auto", display: "block" }} />
+  </Box>
+   
     );
   if (!videos) return <Typography>No videos found.</Typography>;
 
@@ -65,7 +68,7 @@ function Youtube({ darkmode }) {
         }}
       >
         {/* Main Video content */}
-        <Grid item xs={12} md={8} sx={{ px: isMobile ? 0 : 2 }}>
+        <Grid size={{xs:12,md:8}} sx={{ px: isMobile ? 0 : 2 }}>
           {selectedVideoId && (
             <>
               <Box
@@ -86,7 +89,7 @@ function Youtube({ darkmode }) {
                   ...videoInfoStyles(colors),
                   mt: isMobile ? 1 : 0.5,
                   fontWeight: 600,
-                  fontSize: isMobile ? 18 : 22,
+                  fontSize: isMobile ? 12 : 16,
                   px: isMobile ? 2 : 0,
                 }}
               >
