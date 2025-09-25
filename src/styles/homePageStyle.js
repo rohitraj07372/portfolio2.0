@@ -66,6 +66,10 @@ techOrbit: {
     
     
   },
+  rotate180: {
+    transform: 'rotate(180deg)',
+     
+  },
   buddha: {
     position: 'relative',
     zIndex: 2,

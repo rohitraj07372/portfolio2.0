@@ -145,7 +145,7 @@ const Home = ({ darkMode }) => {
               className="techWrapper"
               style={{ transform: "rotate(144deg) translateY(-130px)" }}
             >
-              <img src={javascript} alt="JavaScript" className="techIcon" />
+              <img src={javascript} alt="JavaScript" className="techIcon rotate180" />
             </Box>
             <Box
               className="techWrapper"
