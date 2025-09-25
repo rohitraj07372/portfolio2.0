@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Box, TextField, Button, Typography, CircularProgress, useMediaQuery, Snackbar, Alert as MuiAlert } from '@mui/material';
 import { getContactPageStyles } from '../styles/contactPage/contactPageStyle';
 import { useSendContactEmail } from '../services/contactUs/contactUsServices';
@@ -19,7 +19,12 @@ const ContactPage = ({ darkMode }) => {
   const [snackbarMsg, setSnackbarMsg] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
-  const { mutate: sendEmail, isLoading } = useSendContactEmail();
+  const { mutate: sendEmail, isPending } = useSendContactEmail();
+
+
+   useEffect(() => {  
+  console.log("isPending" , isPending )},[isPending]
+ );
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -193,12 +198,12 @@ const ContactPage = ({ darkMode }) => {
           
            
             fullWidth
-            disabled={isLoading || !form.name || !form.email || !form.message }
+            disabled={isPending || !form.name || !form.email || !form.message }
             sx={{ mt: 2, mb: 1, fontWeight: 600, borderRadius: 16, backgroundColor: darkMode ? 'rgba(255,255,255,0.18)' : colorPalette.primary.main, color:darkMode ? 'rgba(150, 148, 148, 0.88)': 'rgba(150, 53, 0, 0.88)',   boxShadow: 'inset 0 2px 2px rgba(0, 0, 0, 0.6)',  }}
             
             transition="background-color 0.3s, box-shadow 0.3s"
           >
-            {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Send Message'}
+            {isPending ? <CircularProgress size={24} color="inherit" /> : 'Send Message'}
           </Button>
         </form>
         {/* SNACKBAR */}

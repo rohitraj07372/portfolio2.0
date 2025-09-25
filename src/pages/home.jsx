@@ -70,7 +70,7 @@ const Home = ({ darkMode }) => {
         {/* Left Text */}
         <Box sx={{...styles.textContainer, marginTop: isMobile ? 10 : 0  }}>
           <Typography variant="h5" sx={{ color: darkMode ? "#ccc" : "#555" }}>
-            Hi there! I'm
+            Hi there! I'm 
           </Typography>
           <Typography variant="h3" fontWeight="bold" color="primary">
             ROHIT
@@ -133,7 +133,7 @@ const Home = ({ darkMode }) => {
               className="techWrapper"
               style={{ transform: "rotate(72deg) translateY(-140px)" }}
             >
-              <img src={reactLogo} alt="React" className="techIcon" />
+              <img src={reactLogo} alt="React" className="techIcon"  />
             </Box>
             <Box
               className="techWrapper"
