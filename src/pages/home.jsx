@@ -96,27 +96,20 @@ const Home = ({ darkMode }) => {
               onClick={() => {
                 navigate("/about");
               }}
-               sx={{
-           
-          
-          fontSize: 16,
-        
-          color: "#fff",
-        
-        }}
+              
             >
               Learn More
             </IconButton> 
             
           
             
-      <Box
+      <IconButton
         
        className="rainbow"
         
       >
         Resume
-      </Box>
+      </IconButton>
     
           </Box>
         </Box>
