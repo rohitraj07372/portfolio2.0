@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button, useMediaQuery } from "@mui/material";
+import { Box, Typography, Button, useMediaQuery, IconButton } from "@mui/material";
 import { getHomePageStyles } from "../styles/homePageStyle";
 import chakra from "../assets/chakra.png";
 import buddha from "../assets/buddha.png";
@@ -16,6 +16,10 @@ import sql from "../assets/tech/sql.png";
 import { useNavigate } from "react-router-dom";
 // import Particles from "../components/particleBackground/Particle";
 import LightRays from "../components/LightRays/LightRays";
+import { styled, keyframes } from "@mui/system";
+import "../styles/borderAnimation.css";
+
+   
 
 const Home = ({ darkMode }) => {
   const isMobile = useMediaQuery("(max-width:768px)");
@@ -86,17 +90,34 @@ const Home = ({ darkMode }) => {
             experiences."
           </Typography>
           <Box sx={{ display: "flex", gap: 2, mt: 4 }}>
-            <Button
+            
+              <IconButton
+              className="rainbow"
               onClick={() => {
                 navigate("/about");
               }}
-              variant="contained"
+               sx={{
+           
+          
+          fontSize: 16,
+        
+          color: "#fff",
+        
+        }}
             >
               Learn More
-            </Button>
-            <Button variant="contained" color="secondary">
-              Resume
-            </Button>
+            </IconButton> 
+            
+          
+            
+      <Box
+        
+       className="rainbow"
+        
+      >
+        Resume
+      </Box>
+    
           </Box>
         </Box>
 
@@ -133,6 +154,7 @@ const Home = ({ darkMode }) => {
               className="techWrapper"
               style={{ transform: "rotate(72deg) translateY(-140px)" }}
             >
+              
               <img src={reactLogo} alt="React" className="techIcon"  />
             </Box>
             <Box
