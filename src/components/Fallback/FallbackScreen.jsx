@@ -1,54 +1,59 @@
-import React from 'react';
-import { Box, Typography, Skeleton, CircularProgress } from '@mui/material';
+import React from "react";
+import { Box, Typography, Skeleton, CircularProgress } from "@mui/material";
 
 const LoadingScreen = ({ darkMode }) => {
   // Colors adjusting for dark/light theme
-  const backgroundColor = darkMode ? '#0f0f0f' : '#ffffff';
-  const textColor = darkMode ? '#f1f1f1' : '#202020';
-  const skeletonBg = darkMode ? 'grey.900' : 'grey.200';
+  const backgroundColor = darkMode ? "#0f0f0f" : "#ffffff";
+  const textColor = darkMode ? "#f1f1f1" : "#202020";
+  const skeletonBg = darkMode ? "grey.900" : "grey.200";
 
   return (
     <Box
       sx={{
-        position: 'fixed',
+        position: "fixed",
         top: 0,
         left: 0,
-        height: '100vh',
-        width: '100vw',
+        height: "100vh",
+        width: "100vw",
         bgcolor: backgroundColor,
         color: textColor,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
         p: 4,
-        overflow: 'hidden',
+        overflow: "hidden",
         zIndex: 1400,
       }}
     >
       {/* Simulated top bar like YouTube */}
       <Box
         sx={{
-          width: '100%',
+          width: "100%",
           height: 56,
-          display: 'flex',
-          alignItems: 'center',
+          display: "flex",
+          alignItems: "center",
           px: 2,
-          borderBottom: `1px solid ${darkMode ? '#303030' : '#e0e0e0'}`,
+          borderBottom: `1px solid ${darkMode ? "#303030" : "#e0e0e0"}`,
         }}
       >
         {/* Fake logo placeholder */}
-        <Skeleton variant="rectangular" width={90} height={28} sx={{ bgcolor: skeletonBg, borderRadius: 1 }} />
+        <Skeleton
+          variant="rectangular"
+          width={90}
+          height={28}
+          sx={{ bgcolor: skeletonBg, borderRadius: 1 }}
+        />
       </Box>
 
       {/* Content area like YouTube home loading */}
       <Box
         sx={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
           gap: 3,
           mt: 4,
-          width: '100%',
+          width: "100%",
           maxWidth: 1200,
         }}
       >
@@ -82,28 +87,28 @@ const LoadingScreen = ({ darkMode }) => {
       {/* Center circular loader */}
       <Box
         sx={{
-          position: 'absolute',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          position: "absolute",
+          top: "50%",
+          transform: "translateY(-50%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
         <CircularProgress
           thickness={4}
           size={48}
-          sx={{ color: darkMode ? '#f1f1f1' : '#202020', mb: 2 }}
+          sx={{ color: darkMode ? "#f1f1f1" : "#202020", mb: 2 }}
         />
         <Typography
           variant="subtitle1"
           sx={{
             fontWeight: 500,
             opacity: 0.7,
-            animation: 'pulse 2s ease-in-out infinite',
-            '@keyframes pulse': {
-              '0%, 100%': { opacity: 0.7 },
-              '50%': { opacity: 0.3 },
+            animation: "pulse 2s ease-in-out infinite",
+            "@keyframes pulse": {
+              "0%, 100%": { opacity: 0.7 },
+              "50%": { opacity: 0.3 },
             },
           }}
         >
