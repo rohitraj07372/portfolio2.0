@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Button, useMediaQuery } from "@mui/material";
-import { getHomePageStyles } from "../styles/homepagestyle";
+import { getHomePageStyles } from "../styles/homePageStyle";
 import chakra from "../assets/chakra.png";
 import buddha from "../assets/buddha.png";
 import mongo from "../assets/tech/mongo.png";
