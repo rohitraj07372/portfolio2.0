@@ -31,7 +31,7 @@ const capsuleButtonStyle = {
   "&:hover": {
     backgroundColor: "#002663",
     transform: "translateY(-2px) scale(1.03)",
-    boxShadow: "0 12px 30px rgba(10, 29, 55, 0.55)",
+    boxShadow: "0 12px 30px rgba(10, 29, 55, 0.56)",
   },
 };
 
