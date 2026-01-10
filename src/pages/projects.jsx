@@ -1,11 +1,11 @@
 import { Box, Grid } from "@mui/material";
 import React from "react";
 import ProjectCard from "../components/project/ProjectCard";
-import calculator from "../assets/projectImage/calculator.png";
-import passwordgen from "../assets/projectImage/password.png";
-import ticTacToe from "../assets/projectImage/tictacj.png";
-import wheatherApp from "../assets/projectImage/weather.png";
-import dev from "../assets/projectImage/dev.png";
+import calculator from "../assets/projectImage/calculator.paddingX";
+import passwordgen from "../assets/projectImage/password.PNG";
+import ticTacToe from "../assets/projectImage/tictacj.PNG";
+import wheatherApp from "../assets/projectImage/weather.PNG";
+import dev from "../assets/projectImage/dev.PNG";
 
 import LightRays from "../components/LightRays/LightRays";
 const projects = ({ darkMode }) => {
