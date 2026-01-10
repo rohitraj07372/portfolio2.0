@@ -17,6 +17,24 @@ import { useNavigate } from "react-router-dom";
 // import Particles from "../components/particleBackground/Particle";
 import LightRays from "../components/LightRays/LightRays";
 
+const capsuleButtonStyle = {
+  borderRadius: "999px", // capsule / pill shape
+  px: 4,
+  py: 1.2,
+  fontSize: "16px",
+  fontWeight: 600,
+  textTransform: "none",
+  backgroundColor: "#0A1D37", // navy blue
+  color: "#ffffff",
+  boxShadow: "0 6px 20px rgba(10, 29, 55, 0.35)",
+  transition: "all 0.3s ease",
+  "&:hover": {
+    backgroundColor: "#002663",
+    transform: "translateY(-2px) scale(1.03)",
+    boxShadow: "0 12px 30px rgba(10, 29, 55, 0.55)",
+  },
+};
+
 const Home = ({ darkMode }) => {
   const isMobile = useMediaQuery("(max-width:768px)");
   const styles = getHomePageStyles(darkMode);
@@ -43,21 +61,19 @@ const Home = ({ darkMode }) => {
             alphaParticles={false}
             disableRotation={false}
           /> */}
-          
- 
-  <LightRays
-    raysOrigin="top-center"
-    raysColor="#00ffff"
-    raysSpeed={1.5}
-    lightSpread={0.8}
-    rayLength={1.2}
-    followMouse={true}
-    mouseInfluence={0.2}
-    noiseAmount={0.1}
-    distortion={0.05}
-    className="custom-rays"
-  />
- 
+
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#00ffff"
+            raysSpeed={1.5}
+            lightSpread={0.8}
+            rayLength={1.2}
+            followMouse={true}
+            mouseInfluence={0.2}
+            noiseAmount={0.1}
+            distortion={0.05}
+            className="custom-rays"
+          />
         </Box>
       )}
       <Box
@@ -85,16 +101,21 @@ const Home = ({ darkMode }) => {
             "Turning clean code and UI magic into full-stack functional
             experiences."
           </Typography>
-          <Box sx={{ display: "flex", gap: 2, mt: 4 }}>
-            <Button
-              onClick={() => {
-                navigate("/about");
-              }}
-              variant="contained"
-            >
+          <Box sx={{ display: "flex", gap: 2, mt: 4, flexWrap: "wrap" }}>
+            <Button onClick={() => navigate("/about")} sx={capsuleButtonStyle}>
               Learn More
             </Button>
-            <Button variant="contained" color="secondary">
+
+            <Button
+              sx={capsuleButtonStyle}
+              onClick={() =>
+                window.open(
+                  "https://drive.google.com/file/d/1NoWq4GGBKLKcZJnERxfCJBdARr5GwGEZ/view?usp=sharing",
+                  "_blank",
+                  "noopener,noreferrer"
+                )
+              }
+            >
               Resume
             </Button>
           </Box>
