@@ -14,7 +14,7 @@ import css from "../assets/tech/css.png";
 import next from "../assets/tech/next.png";
 import sql from "../assets/tech/sql.png";
 import { useNavigate } from "react-router-dom";
-// import Particles from "../components/particleBackground/Particle";
+
 import LightRays from "../components/LightRays/LightRays";
 
 const capsuleButtonStyle = {

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useYoutubePlaylist } from "../services/youtube/youtubeServices";
 import VideoPlayer from "../components/Youtube/VideoPlayer";
 import VideoSidebar from "../components/Youtube/VideoSidebar";
-import YoutubeHeader from "../components/Youtube/YoutubeHeader";
 
 import {
   Box,
@@ -16,21 +15,18 @@ import {
   palette,
   containerStyles,
   videoInfoStyles,
-  channelStyles,
-  dateStyles,
 } from "../styles/youtube/style.js";
 import LightRays from "../components/LightRays/LightRays.jsx";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 const PLAYLIST_ID = "UUhUYAjYRl9dTtna5ZET3E5Q";
 
-function Youtube({darkmode}) {
-  
+function Youtube({ darkmode }) {
   const { data: videos, isLoading, search } = useYoutubePlaylist(PLAYLIST_ID);
   const [selectedVideoId, setSelectedVideoId] = useState(null);
-console.log("data from youtube", videos);
-   
-  const colors = palette[darkmode? "dark" : "light" ];
+  console.log("data from youtube", videos);
+
+  const colors = palette[darkmode ? "dark" : "light"];
 
   useEffect(() => {
     if (!selectedVideoId && videos && videos.length) {
@@ -39,9 +35,7 @@ console.log("data from youtube", videos);
   }, [videos, selectedVideoId]);
 
   if (isLoading)
-    return (
-      <CircularProgress sx={{ mt: 4, mx: "auto", display: "block" }} />
-    );
+    return <CircularProgress sx={{ mt: 4, mx: "auto", display: "block" }} />;
   if (!videos) return <Typography>No videos found.</Typography>;
 
   const selectedVideo = videos.find(
@@ -50,10 +44,8 @@ console.log("data from youtube", videos);
 
   return (
     <Box sx={containerStyles(colors)}>
- 
- 
       <Grid container spacing={4} sx={{ py: 2, px: 4 }}>
-        <Grid size={{xs:12, md:8}} >
+        <Grid size={{ xs: 12, md: 8 }}>
           {selectedVideoId && (
             <>
               {/* Player */}
@@ -61,8 +53,7 @@ console.log("data from youtube", videos);
 
               {/* Video Title */}
               <Typography
-                sx={{ ...videoInfoStyles(colors), mt: .5, fontWeight: 600 }}
-                 
+                sx={{ ...videoInfoStyles(colors), mt: 0.5, fontWeight: 600 }}
               >
                 {selectedVideo?.snippet.title}
               </Typography>
@@ -72,9 +63,8 @@ console.log("data from youtube", videos);
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap:3,
-                  mt: .5,
-                  
+                  gap: 3,
+                  mt: 0.5,
                 }}
               >
                 {/* Left Side - Channel info */}
@@ -84,9 +74,7 @@ console.log("data from youtube", videos);
                     src={`https://yt3.ggpht.com/ytc/${selectedVideo?.snippet.channelId}=s88-c-k-c0x00ffffff-no-rj`}
                   />
                   <Box>
-                    <Typography
-                      sx={{ fontWeight: 500, color: colors.title }}
-                    >
+                    <Typography sx={{ fontWeight: 500, color: colors.title }}>
                       {selectedVideo?.snippet.channelTitle}
                     </Typography>
                     <Typography sx={{ fontSize: "13px", color: colors.date }}>
@@ -98,10 +86,9 @@ console.log("data from youtube", videos);
                   </Box>
                 </Box>
 
-
-<Helmet>
-    <script src="https://apis.google.com/js/platform.js"></script>  </Helmet>
-
+                <Helmet>
+                  <script src="https://apis.google.com/js/platform.js"></script>{" "}
+                </Helmet>
 
                 {/* Right Side - Subscribe */}
                 {/* <Button
@@ -121,14 +108,19 @@ console.log("data from youtube", videos);
                 >
                   Subscribe
                 </Button> */}
-                <div class="g-ytsubscribe" data-channelid="UChUYAjYRl9dTtna5ZET3E5Q" data-layout="full" data-count="default"></div>
+                <div
+                  class="g-ytsubscribe"
+                  data-channelid="UChUYAjYRl9dTtna5ZET3E5Q"
+                  data-layout="full"
+                  data-count="default"
+                ></div>
               </Box>
             </>
           )}
         </Grid>
 
         {/* Sidebar */}
-        <Grid size={{xs:12, md:4}}  >
+        <Grid size={{ xs: 12, md: 4 }}>
           <VideoSidebar
             darkmode={darkmode}
             videos={videos}
