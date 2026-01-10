@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 // import SplashCursor from "./components/SplashCursor/SplashCursor";
 import Butterfly from "./components/Butterfly/Butterfly";
-import LoadingScreen from "./components/fallback/FallbackScreen";
+import LoadingScreen from "./components/Fallback/FallbackScreen";
 const Home = lazy(() => import("./pages/home"));
 const About = lazy(() => import("./pages/about"));
 const ContactUs = lazy(() => import("./pages/contactUs"));
@@ -16,12 +16,10 @@ const Youtube = lazy(() => import("./pages/youtube"));
 
 const App = () => {
   const getInitialDarkMode = () => {
-     
     const saved = sessionStorage.getItem("darkMode");
-      if (saved === null) {
-    
-    return true;
-      }
+    if (saved === null) {
+      return true;
+    }
     return saved === "true";
   };
 
@@ -33,17 +31,26 @@ const App = () => {
       return newValue;
     });
   };
- 
+
   const location = useLocation();
 
-   
   const rootOverflow =
     location.pathname === "/projects" ? "auto" : { xs: "auto", md: "hidden" };
 
   return (
-    <Box sx={{ width: "100vw", height: "100vh", position: "relative",   overflow:rootOverflow, background: darkMode ? `radial-gradient(ellipse 60% 30% at 70% 15%, rgba(0, 30, 60, 0.25) 0%, transparent 70%),
+    <Box
+      sx={{
+        width: "100vw",
+        height: "100vh",
+        position: "relative",
+        overflow: rootOverflow,
+        background: darkMode
+          ? `radial-gradient(ellipse 60% 30% at 70% 15%, rgba(0, 30, 60, 0.25) 0%, transparent 70%),
     radial-gradient(ellipse 50% 20% at 20% 70%, rgba(0, 100, 140, 0.12) 0%, transparent 80%),
-    linear-gradient(135deg, #041e46ff 0%, #0c0e0fff 60%, #000b1a 100%)`: "#ffe46dff" }}>
+    linear-gradient(135deg, #041e46ff 0%, #0c0e0fff 60%, #000b1a 100%)`
+          : "#ffe46dff",
+      }}
+    >
       {/* {darkMode && <SplashCursor />} */}
       <Box sx={{ position: "sticky", top: 0, zIndex: 100 }}>
         <Navbar
@@ -73,10 +80,9 @@ const App = () => {
             <Route path="/about" element={<About darkMode={darkMode} />} />
             <Route
               path="/projects"
-              element={
-                <Projects darkMode={darkMode} />}
+              element={<Projects darkMode={darkMode} />}
             />
-              
+
             <Route
               path="/contact"
               element={<ContactUs darkMode={darkMode} />}
