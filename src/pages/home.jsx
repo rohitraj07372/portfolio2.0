@@ -25,6 +25,15 @@ const Home = ({ darkMode }) => {
   const isMobile = useMediaQuery("(max-width:768px)");
   const styles = getHomePageStyles(darkMode);
   const navigate = useNavigate();
+
+    const handleDownload = () => {
+    window.open(
+      "https://drive.google.com/file/d/1QZw_sLiKBW2MZEkhlQs5056CwSKbzqQf/view?usp=drive_link",
+      "_blank"
+    );
+  };
+
+
   return (
     <Box sx={{ ...styles.root }}>
       {darkMode && (
@@ -103,7 +112,7 @@ const Home = ({ darkMode }) => {
             
           
             
-    <Button variant="contained" color="primary" size="large"  
+    <Button variant="contained" color="primary" size="large"   onClick={handleDownload}
         
        
         
