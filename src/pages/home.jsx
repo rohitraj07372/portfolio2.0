@@ -91,25 +91,25 @@ const Home = ({ darkMode }) => {
           </Typography>
           <Box sx={{ display: "flex", gap: 2, mt: 4 }}>
             
-              <IconButton
-              className="rainbow"
+              <Button variant="contained" color="primary" size="large"
+              
               onClick={() => {
                 navigate("/about");
               }}
               
             >
               Learn More
-            </IconButton> 
+            </Button> 
             
           
             
-      <IconButton
+    <Button variant="contained" color="primary" size="large"  
         
-       className="rainbow"
+       
         
       >
         Resume
-      </IconButton>
+      </Button>
     
           </Box>
         </Box>
